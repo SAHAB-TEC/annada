@@ -1,0 +1,8 @@
+<odoo>
+
+    <menuitem id="menu_product_validity"
+              name="Product Validity"
+              action="report_product_validity.action_view_product_validity"
+              parent="stock.menu_stock_inventory_control"
+              sequence="112"/>
+</odoo>

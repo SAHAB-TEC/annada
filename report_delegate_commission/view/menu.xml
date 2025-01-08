@@ -1,0 +1,8 @@
+<odoo>
+
+    <menuitem id="menu_delegate_commission"
+              name="Delegate Commission"
+              action="report_delegate_commission.action_view_delegate_commission"
+              parent="sale.sale_order_menu"
+              sequence="43"/>
+</odoo>

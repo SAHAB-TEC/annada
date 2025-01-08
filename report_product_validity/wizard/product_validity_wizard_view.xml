@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_validity_form" model="ir.ui.view">
+        <field name="name">Product Validity</field>
+        <field name="model">product.validity.wiz</field>
+        <field name="arch" type="xml">
+            <form string="Product Validity">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                        </group>
+                        <group>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="print_product_validity" string="Print" type="object" class="btn-primary"/>
+                    or
+                    <button name="action_view_expire" string="View" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_stock_expire_tree">
+        <field name="name">stock.expire.tree</field>
+        <field name="model">stock.lot</field>
+        <field eval="10" name="priority"/>
+        <field name="arch" type="xml">
+            <tree create="1" edit="1" import="1" sample="1">
+                <field name="product_id"/>
+                <field name="expiration_date"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_view_product_validity" model="ir.actions.act_window">
+        <field name="name">Product Validity</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.validity.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_product_validity_form"/>
+        <field name='target'>new</field>
+    </record>
+
+
+</odoo>

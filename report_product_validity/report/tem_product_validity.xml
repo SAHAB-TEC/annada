@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_saleorder_validity_document_inherit" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//table[hasclass('o_main_table')]/thead/tr/th[@name='th_description']" position="after">
+            <t t-if="doc.order_line.lot_expire_id">
+                <th>Lot/Expire</th>
+            </t>
+        </xpath>
+        <xpath expr="//table/tbody[hasclass('sale_tbody')]/t[2]/tr/t/td[@name='td_name']" position="after">
+            <t t-if="line.lot_expire_id">
+                <td name="td_expire">
+                    <span t-field="line.lot_expire_id"/>
+                </td>
+            </t>
+        </xpath>
+        <xpath expr="//table[hasclass('o_main_table')]/thead/tr/th[@name='th_taxes']" position="after">
+            <th name="th_before_disc">Before Disc</th>
+        </xpath>
+        <xpath expr="//table/tbody[hasclass('sale_tbody')]/t[2]/tr/t/td[@name='td_taxes']" position="after">
+            <td name="td_before_disc">
+                <span t-field="line.before_disc"/>
+            </td>
+        </xpath>
+        <xpath expr="//div[@id='informations']" position="after">
+            <div class="row mt-4 mb-4" id="region">
+                <div t-if="doc.region" class="col-auto col-3 mw-100 mb-2" name="regiondate">
+                    <strong>Region:</strong>
+                    <p class="m-0" t-field="doc.region"/>
+                </div>
+                <div t-if="doc.delegate_sale_id" class="col-auto col-3 mw-100 mb-2">
+                    <strong>Delegate:</strong>
+                    <p class="m-0" t-field="doc.delegate_sale_id"/>
+                </div>
+                <div t-if="doc.cash" class="col-auto col-3 mw-100 mb-2">
+                    <strong>Pyment Type:</strong>
+                    <p class="m-0" t-field="doc.cash"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="tem_report_product_validity">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="text-center">
+                        <h1>Products Validity</h1>
+                    </div>
+                    <table style="border-color:white;" width="100%">
+                        <thead>
+                            <tr style="border:black;border-bottom: 1px solid #C7C7C7;" height="30px">
+                                <th style="border:black;color:black">#</th>
+                                <th style="border:black;color:black">Product</th>
+                                <th style="border:black;color:black">Expiration Date</th>
+                                <th style="border:black;color:black">Lot Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="x" t-value="0"/>
+                            <t t-foreach="validity" t-as="line">
+                                <t t-set="x" t-value="x +1"/>
+                                <tr style="border-bottom: 1px solid #C7C7C7;">
+                                    <td>
+                                        <t t-esc="x"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="line['product_id'][1]"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="line['expiration_date']"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="line['name']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

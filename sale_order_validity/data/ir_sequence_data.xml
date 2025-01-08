@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_lot_create" model="ir.sequence">
+            <field name="name">Lot seq </field>
+            <field name="code">stock.move.line</field>
+            <field name="padding">8</field>
+            <field name="number_next">1</field>
+            <field name="company_id" eval="False"/>
+<!--            <field name="move_line_nosuggest_ids"-->
+<!--               attrs="{'readonly': ['|', ('state', '=', 'cancel'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)]}"-->
+<!--                   context="{'tree_view_ref': 'stock.view_stock_move_line_operation_tree','default_picking_id': picking_id, 'default_move_id': id, 'default_product_id': product_id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id, 'default_company_id': company_id}"/>-->
+
+        </record>
+
+    </data>
+</odoo>

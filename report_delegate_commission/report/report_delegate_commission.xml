@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Product Variant Report -->
+
+    <record id="printed_delegate_commission" model="ir.actions.report">
+        <field name="name">Printed Delegate Commission</field>
+        <field name="model">delegate.commission.wiz</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_delegate_commission.tem_report_delegate_commission</field>
+        <field name="report_file">report_delegate_commission.tem_report_delegate_commission</field>
+        <field name="binding_model_id" ref="report_delegate_commission.model_delegate_commission_wiz"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

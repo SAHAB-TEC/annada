@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Product Variant Report -->
+
+    <record id="printed_product_validity" model="ir.actions.report">
+        <field name="name">Printed Product Validity</field>
+        <field name="model">product.validity.wiz</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_product_validity.tem_report_product_validity</field>
+        <field name="report_file">report_product_validity.tem_report_product_validity</field>
+        <field name="binding_model_id" ref="report_product_validity.model_product_validity_wiz"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

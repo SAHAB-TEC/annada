@@ -1,0 +1,107 @@
+<odoo>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_delegate_commission_hr_form" model="ir.ui.view">
+        <field name="name">view.delegate.commission.hr.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='coach_id']" position="after">
+                <field name="salesperson" invisible="1"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="commission_delegate" string="Commission Delegate">
+                    <field name="commission_delegate_ids">
+                        <tree editable="bottom">
+                            <field name="amount" width="50%"/>
+                            <field name="percentage"/>
+                            <field name="hr_delegate_id" invisible="1"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//notebook/page[@name='commission_delegate']" position="attributes">
+                <attribute name="invisible">salesperson == False</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_delegate_sales_form" model="ir.ui.view">
+        <field name="name">sale.order.validity.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="region"/>
+            </xpath>
+            <xpath expr="//field[@name='region']" position="after">
+                <field name="cash"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="delegate_sale_id"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="view_delegate_sales_tree" model="ir.ui.view">
+        <field name="name">sale.order.validity.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="delegate_sale_id"/>
+                <field name="region"/>
+                <field name="cash"/>
+            </xpath>
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="paid" sum="Total Paid"/>
+                <field name="remaining_amount" sum="Total Remaining"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="delegate_id"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_sales_order_filter_cash_type" model="ir.ui.view">
+        <field name="name">sale.order.cash.search.unpaid.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='analytic_account_id']" position="after">
+                <field name="cash"/>
+                <filter string="Cash" name="cash" domain="[('cash', '=', 'cash')]"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="action_delegate_hr_sale" model="ir.actions.act_window">
+        <field name="name">Delegates</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('salesperson', '=', True)]</field>
+        <field name="context">{'default_salesperson': True}</field>
+        <field name='target'>current</field>
+    </record>
+
+    <menuitem
+            id="hr_delegate_sale"
+            name="Delegates"
+            parent="sale.sale_order_menu"
+            action="delegate_sales.action_delegate_hr_sale"
+            sequence="42"/>
+
+
+</odoo>

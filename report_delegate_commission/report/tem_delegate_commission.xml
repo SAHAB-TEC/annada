@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="tem_report_delegate_commission">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="text-center">
+                        <h1>Delegate Commission</h1>
+                    </div>
+                    <table style="border-color:white;" width="100%">
+                        <thead>
+                            <tr style="border:black;border-bottom: 1px solid #C7C7C7;" height="30px">
+                                <th style="border:black;color:black">#</th>
+                                <th style="border:black;color:black">Delegate</th>
+                                <th style="border:black;color:black">Total Sales</th>
+                                <th style="border:black;color:black">Percent</th>
+                                <th style="border:black;color:black">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="x" t-value="0"/>
+                            <t t-foreach="emp_data" t-as="line">
+                                <t t-set="x" t-value="x +1"/>
+                                <tr style="border-bottom: 1px solid #C7C7C7;">
+                                    <td>
+                                        <t t-esc="x"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="line['emp_name']"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="line['total_sales']"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="line['percent']"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="line['value']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
