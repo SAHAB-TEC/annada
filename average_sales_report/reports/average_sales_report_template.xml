@@ -1,0 +1,65 @@
+<odoo>
+    <template id="report_average_sales_template">
+        <t t-call="web.basic_layout">
+            <t t-set="docs" t-value="docs"/>
+            <t t-foreach="docs" t-as="doc">
+
+                <t t-call="web.html_container">
+                    <div class="page">
+                        <h2 style="text-align: center; color:black;">Average Sales Report -
+                            <span t-esc="doc.year"/>
+                        </h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">
+                                        المنتج</th>
+                                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">
+                                        مبيعات العام</th>
+                                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">
+                                        مبيعات نصف السنة الاول</th>
+                                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">
+                                        المتوسط الشهري للنصف الاول</th>
+                                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">
+                                        مبيعات نصف السنة الثاني</th>
+                                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">
+                                        المتوسط الشهري للنصف الثاني</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.sales_report_line_ids" t-as="doc1">
+                                    <tr>
+                                        <td><span t-field="doc1.bom_id"/></td>
+                                        <td><span t-field="doc1.sales_per_year"/></td>
+                                        <td><span t-field="doc1.sales_first_half"/></td>
+                                        <td><span t-field="doc1.percentage_first_half"/></td>
+                                        <td><span t-field="doc1.sales_second_half"/></td>
+                                        <td><span t-field="doc1.percentage_second_half"/></td>
+                                    </tr>
+                                </t>
+                                <!--                        sum-->
+                                <tr class="tr-sum-total">
+                                    <td><b>Total</b></td>
+                                    <td><b><span t-esc="sum(doc1.sales_per_year for doc in docs)"/></b></td>
+                                    <td><b><span t-esc="sum(doc1.sales_first_half for doc in docs)"/></b></td>
+                                    <td><b><span t-esc="sum(doc1.percentage_first_half for doc in docs)"/></b></td>
+                                    <td><b><span t-esc="sum(doc1.sales_second_half for doc in docs)"/></b></td>
+                                    <td><b><span t-esc="sum(doc1.percentage_second_half for doc in docs)"/></b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="action_average_sales_report" model="ir.actions.report">
+        <field name="name">Average Sales Report</field>
+        <field name="model">average.sales.report.form</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">average_sales_report.report_average_sales_template</field>
+        <field name="print_report_name">'Average Sales Report for ' + object.year</field>
+        <field name="binding_model_id" ref="model_average_sales_report_form"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_target_year">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Target Sales Report</h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">
+                                        Product</th>
+                                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">Target
+                                        Current Year</th>
+                                    <th style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">Target
+                                        Next Year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.lines" t-as="doc1">
+                                    <tr>
+                                        <td><span t-field="doc1.product_id"/></td>
+                                        <td><span t-field="doc1.target_current_year"/></td>
+                                        <td><span t-field="doc1.target_next_year"/></td>
+                                    </tr>
+                                </t>
+                                <!--                        sum-->
+                                <tr class="tr-sum-total">
+                                    <td><b>Total</b></td>
+                                    <td><b><span t-esc="sum(doc1.target_current_year for doc in docs)"/></b></td>
+                                    <td><b><span t-esc="sum(doc1.target_next_year for doc in docs)"/></b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+    <record id="action_target_report" model="ir.actions.report">
+        <field name="name">Target Sales Report</field>
+        <field name="model">product.year.target</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">average_sales_report.report_target_year</field>
+        <field name="print_report_name">'Target Sales Report'</field>
+        <field name="binding_model_id" ref="model_product_year_target"/>
+    </record>
+
+</odoo>

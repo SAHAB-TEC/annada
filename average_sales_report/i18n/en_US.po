@@ -1,0 +1,150 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* average_sales_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e-20241106\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-07 16:13+0000\n"
+"PO-Revision-Date: 2024-12-07 16:13+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: average_sales_report
+#: model:ir.actions.report,print_report_name:average_sales_report.action_average_sales_report
+#: model:ir.actions.report,print_report_name:average_sales_report.action_average_sales_report_html
+msgid "'Average Sales Report for ' + object.product_id.name"
+msgstr "'تقرير  لمتوسط المبيعات لـ ' + object.product_id.name"
+
+#. module: average_sales_report
+#: model:ir.actions.report,name:average_sales_report.action_average_sales_report
+#: model:ir.actions.report,name:average_sales_report.action_average_sales_report_html
+#: model:ir.ui.menu,name:average_sales_report.average_sales_report_menu
+#: model_terms:ir.ui.view,arch_db:average_sales_report.report_average_sales_template
+msgid "Average Sales Report"
+msgstr "تقرير متوسط المبيعات "
+
+#. module: average_sales_report
+#: model:ir.model,name:average_sales_report.model_average_sales_report
+msgid "Average Sales Report for Product"
+msgstr "تقرير  متوسط مبيعات المنتج"
+
+#. module: average_sales_report
+#: model:ir.actions.act_window,name:average_sales_report.action_average_sales_wizard
+msgid "Average Sales Wizard"
+msgstr "معالج المبيعات المتوسط"
+
+#. module: average_sales_report
+#: model_terms:ir.ui.view,arch_db:average_sales_report.view_average_sales_wizard_form
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: average_sales_report
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_report__create_uid
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_wizard__create_uid
+msgid "Created by"
+msgstr "أنشأ بواسطة"
+
+#. module: average_sales_report
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_report__create_date
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_wizard__create_date
+msgid "Created on"
+msgstr "تم الإنشاء في"
+
+#. module: average_sales_report
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_report__display_name
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_wizard__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: average_sales_report
+#: model:ir.model.fields,help:average_sales_report.field_average_sales_report__year
+#: model:ir.model.fields,help:average_sales_report.field_average_sales_wizard__year
+msgid "Enter the year for filtering the sales report."
+msgstr "أدخل السنة لتصفية تقرير المبيعات."
+
+#. module: average_sales_report
+#: model_terms:ir.ui.view,arch_db:average_sales_report.view_average_sales_wizard_form
+msgid "Generate Average Sales Report"
+msgstr "إنشاء تقرير متوسط المبيعات "
+
+#. module: average_sales_report
+#: model_terms:ir.ui.view,arch_db:average_sales_report.view_average_sales_wizard_form
+msgid "Generate Report"
+msgstr "إنشاء التقرير"
+
+#. module: average_sales_report
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_report__id
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_wizard__id
+msgid "ID"
+msgstr "الرقم التعريفي"
+
+#. module: average_sales_report
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_report__write_uid
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_wizard__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: average_sales_report
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_report__write_date
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_wizard__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: average_sales_report
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_report__percentage_first_half
+#: model_terms:ir.ui.view,arch_db:average_sales_report.report_average_sales_template
+msgid "Percentage Sales First Half"
+msgstr " نسبة المبيعات في النصف الأول من السنة"
+
+#. module: average_sales_report
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_report__percentage_second_half
+#: model_terms:ir.ui.view,arch_db:average_sales_report.report_average_sales_template
+msgid "Percentage Sales Second Half"
+msgstr "نسبة المبيعات في النصف الثاني من السنة"
+
+#. module: average_sales_report
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_report__product_id
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_wizard__product_id
+#: model_terms:ir.ui.view,arch_db:average_sales_report.report_average_sales_template
+msgid "Product"
+msgstr "المنتج"
+
+#. module: average_sales_report
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_report__sales_first_half
+#: model_terms:ir.ui.view,arch_db:average_sales_report.report_average_sales_template
+msgid "Sales First Half"
+msgstr "المبيعات في النصف الأول من السنه"
+
+#. module: average_sales_report
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_report__sales_per_year
+#: model_terms:ir.ui.view,arch_db:average_sales_report.report_average_sales_template
+msgid "Sales Per Year"
+msgstr "كل مبيعات سنة "
+
+#. module: average_sales_report
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_report__sales_second_half
+#: model_terms:ir.ui.view,arch_db:average_sales_report.report_average_sales_template
+msgid "Sales Second Half"
+msgstr "المبيعات في النصف الثاني من السنة"
+
+#. module: average_sales_report
+#: model_terms:ir.ui.view,arch_db:average_sales_report.view_average_sales_wizard_form
+msgid "View Report"
+msgstr "عرض التقرير"
+
+#. module: average_sales_report
+#: model:ir.model,name:average_sales_report.model_average_sales_wizard
+msgid "Wizard for Average Sales Report"
+msgstr "معالج تقرير المبيعات المتوسط"
+
+#. module: average_sales_report
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_report__year
+#: model:ir.model.fields,field_description:average_sales_report.field_average_sales_wizard__year
+msgid "Year To Filter "
+msgstr " السنة  "

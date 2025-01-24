@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_open_mrp_bom_wizard" model="ir.actions.act_window">
+        <field name="name">Bill of Material Details</field>
+        <field name="res_model">mrp.bom.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem id="menu_mrp_bill_of_material_details" name=" MRP Bill of Material Details"
+              parent="mrp.menu_mrp_reporting" sequence="22" action="action_open_mrp_bom_wizard" groups="BOM_details_report.group_reports_access" />
+</odoo>

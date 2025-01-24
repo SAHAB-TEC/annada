@@ -1,0 +1,44 @@
+.custom-tree-header {
+    thead th, thead th * {
+
+        white-space: normal; // Allow text wrapping
+        word-wrap: break-word;
+    }
+    thead th{
+            background-color: #DDD !important; // Header background color
+            font-size: 14px; // Header font size
+            font-weight: bold; // Header font weight
+            color: darkblue;
+        }
+    tbody td, tbody td * {
+        white-space: normal; // Allow text wrapping for rows
+        word-wrap: break-word;
+    }
+
+    table {
+        table-layout: auto; // Adjust column width dynamically
+    }
+
+
+    table {
+        table-layout: auto;
+        border-collapse: collapse; // Ensure borders are clean and not doubled
+        width: 100%; //
+    }
+
+    table, th, td {
+        border: 1px solid #ddd; // Add borders to the table, header, and cells
+    }
+
+    tbody tr:nth-child(odd) {
+        background-color: #f9f9f9; // Stripe effect for odd rows
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #ffffff; // Keep even rows white
+    }
+
+    tbody tr:hover {
+        background-color: #f1f1f1; // Optional: highlight row on hover
+    }
+}

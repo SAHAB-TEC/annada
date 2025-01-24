@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_open_bom_wizard" model="ir.actions.act_window">
+        <field name="name">Bill of Material Details</field>
+        <field name="res_model">bom.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+<!--    <menuitem id="menu_bill_of_material_details" name="Bill of Material Details" -->
+<!--              parent="stock.menu_warehouse_report" sequence="301" action="action_open_bom_wizard"/>-->
+</odoo>

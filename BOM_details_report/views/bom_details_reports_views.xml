@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View bom.details.reports form -->
+    <record id="view_bom_details_reports_form" model="ir.ui.view">
+        <field name="name">view.bom.details.reports.form</field>
+        <field name="model">bom.details.reports</field>
+        <field name="arch" type="xml">
+            <form string="Bom Details Reports">
+                <header>
+                    <button name="action_print" string="Print" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="product_id"/>
+                        <h1>
+                            <field name="product_id" placeholder="Product..."/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <field name="quantity"/>
+                        <field name="uom_id"/>
+                    </group>
+
+                    <notebook>
+                        <page name="line_ids" string="Lines">
+                            <field name="line_ids" readonly="False" mode="tree">
+                                <tree editable="bottom" string="Components" create="0" edit="1">
+                                    <field name="product_id"/>
+                                    <field name="product_qty" optional="show"/>
+                                    <field name="product_uom" optional="show"/>
+                                    <field name="is_secondary_readonly" column_invisible="1" optional="hide"/>
+                                    <field name="secondary_product_uom_qty" readonly="1" optional="show"/>
+                                    <field name="secondary_product_uom_id" readonly="is_secondary_readonly == True"
+                                           optional="show"/>
+                                    <field name="secondary_uom_ids" widget="many2many_tags" column_invisible="1"/>
+                                    <field name="available_qty" optional="show"/>
+                                    <field name="pending_po_product_qty" optional="show"/>
+                                    <field name="target_amount" column_invisible="1" optional="hide"/>
+                                    <field name="amount_state" optional="hide"/>
+                                    <field name="remaining_target" optional="hide"/>
+                                    <field name="surplus" optional="show"/>
+                                    <field name="shortage" optional="show"/>
+                                </tree>
+
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--    tree-->
+    <record id="view_bom_details_reports_tree" model="ir.ui.view">
+        <field name="name">view.bom.details.reports.tree</field>
+        <field name="model">bom.details.reports</field>
+        <field name="arch" type="xml">
+            <tree string="Bom Details Reports">
+                <field name="product_id"/>
+                <field name="quantity"/>
+                <field name="line_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action bom.details.reports -->
+    <record id="action_bom_details_reports" model="ir.actions.act_window">
+        <field name="name">Bom Details Reports</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bom.details.reports</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new Bom Details Reports.
+            </p>
+        </field>
+    </record>
+
+    <!--    menu item-->
+    <menuitem id="menu_bom_details_reports" name="Bom Details Form" parent="stock.menu_warehouse_report" sequence="301"
+              action="action_bom_details_reports"/>
+
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    template final_product_report_pdf-->
+    <template id="final_product_report_pdf">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="doc_title">Final Product Report</t>
+                <t t-call="web.html_container">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2>Final Product Report</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>المنتج</th>
+                                            <th>باقي المستهدف للسنة الحالية للمنتج</th>
+                                            <th>مخزون المادة الخام</th>
+                                            <th>الشراء / المعتمد</th>
+                                            <th>المستهلك لبقية العام من المادة الخام</th>
+                                            <th>مرحل المادة الخام</th>
+                                            <th>المستهدف للعام الجديد للمنتج</th>
+                                            <th>المستهدف نصف السنوي للمنتج</th>
+                                            <th>مستهدف نصف سنوي للمادة الخام</th>
+                                            <th>المستهدف السنوي للعام الجديد للخام</th>
+                                            <th>المطلوب لستة اشهر للمادة الخام</th>
+                                            <th>الخام المطلوب للعام الجديد كاملا</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="doc.components" t-as="o">
+                                            <td><span t-esc="o.product_id"/></td>
+                                            <td><span t-esc="o.remaining_target"/></td>
+                                            <td><span t-esc="o.concentrate_stock"/></td>
+                                            <td><span t-esc="o.approved_purchased"/></td>
+                                            <td><span t-esc="o.consumer_center"/></td>
+                                            <td><span t-esc="o.center_stage"/></td>
+                                            <td><span t-esc="o.new_target_2025"/></td>
+                                            <td><span t-esc="o.half_year_target"/></td>
+                                            <td><span t-esc="o.half_year_target_concentrate"/></td>
+                                            <td><span t-esc="o.full_year_target_concentrate"/></td>
+                                            <td><span t-esc="o.required_six_months"/></td>
+                                            <td><span t-esc="o.required_full_year"/></td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!--    action final_product_report_pdf-->
+    <record id="action_final_product_report_pdf" model="ir.actions.report">
+        <field name="name">Final Product Report PDF</field>
+        <field name="model">final.product.reports</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">component_final_product_report.final_product_report_pdf</field>
+        <field name="report_file">component_final_product_report.final_product_report_pdf</field>
+    </record>
+
+</odoo>

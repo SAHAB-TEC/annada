@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--        tree-->
+        <record id="view_average_sales_report_tree" model="ir.ui.view">
+            <field name="name">view.average.sales.report.tree</field>
+            <field name="model">average.sales.report.form</field>
+            <field name="arch" type="xml">
+                <tree string="Average Sales Report">
+                    <field name="year"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_average_sales_report_form" model="ir.ui.view">
+            <field name="name">view.average.sales.report.form</field>
+            <field name="model">average.sales.report.form</field>
+            <field name="arch" type="xml">
+                <form string="Average Sales Report">
+                    <header>
+                        <button name="print" string="Print" type="object" class="oe_highlight"/>
+                        <button name="calculate_sales" string="Refresh" type="object" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="year"/>
+                            </group>
+                        </group>
+
+                        <!-- Components: One2many field with 'average.sales.report.line' -->
+                        <notebook>
+                            <page name="components" string="Components">
+                                <field name="sales_report_line_ids" widget="one2many">
+                                    <tree string="Components" class="custom-tree-header" editable="bottom">
+                                        <field name="bom_id" width="40"/>
+                                        <field name="product_uom" readonly="1" width="40"/>
+                                        <field name="secondary_uom_ids" column_invisible="1" width="40"/>
+                                        <field name="secondary_product_uom_id" column_invisible="1" width="40" readonly="False"/>
+                                        <field name="sales_per_year" optional="hide" width="30" sum="sales_per_year"/>
+                                        <field name="sales_per_year_second_unit" optional="hide" width="30" sum="sales_per_year_second_unit"/>
+                                        <field name="sales_first_half" optional="hide" width="30" sum="sales_first_half"/>
+                                        <field name="percentage_first_half" optional="show" width="30" sum="percentage_first_half"/>
+                                        <field name="sales_second_half" optional="hide" width="30" sum="sales_second_half"/>
+                                        <field name="percentage_second_half" optional="show" width="30" sum="percentage_second_half"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action for Opening the Form -->
+        <record id="action_average_sales_report_form" model="ir.actions.act_window">
+            <field name="name">Average Sales Report</field>
+            <field name="res_model">average.sales.report.form</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first Average Sales Report
+                </p>
+            </field>
+        </record>
+
+        <!-- Menu Item to Open the Action -->
+        <menuitem id="menu_average_sales_report_form" name="Average Sales Report form"
+                  parent="stock.menu_warehouse_report" sequence="305" action="action_average_sales_report_form"
+                  groups="BOM_details_report.group_reports_access"/>
+
+
+    </data>
+</odoo>

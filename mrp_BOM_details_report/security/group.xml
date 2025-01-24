@@ -1,0 +1,6 @@
+<odoo>
+    <!-- Define the Group for Reports Access -->
+    <record id="group_reports_access" model="res.groups">
+        <field name="name">Reports Access</field>
+    </record>
+</odoo>

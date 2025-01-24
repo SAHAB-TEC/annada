@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="bom_report_template">
+
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <t t-foreach="docs" t-as="doc">
+
+                        <style>
+                            body{
+                            font-family: 'Arial', sans-serif;
+                            font-size: 14px;
+                            color: #333;
+                            margin: 0 auto;
+                            padding: 20px;
+                            direction: rtl;
+                            }
+                            body {
+                            font-family: 'DejaVu Sans', 'Arial', sans-serif;
+                            }
+                            .page {
+                            font-family: 'Arial', sans-serif;
+                            font-size: 14px;
+                            color: #333;
+                            margin: 0 auto;
+                            padding: 20px;
+                            direction: rtl;
+                            }
+
+                            table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            }
+
+                            th, td {
+                            border: 1px solid #ddd;
+                            padding: 8px;
+                            }
+
+                            th {
+                            background-color: #f2f2f2;
+                            }
+
+                            .arabic {
+                            font-family: 'Droid Arabic Naskh', sans-serif;
+                            font-size: 16px;
+                            color: #333;
+                            direction: rtl;
+                            }
+                        </style>
+
+                        <h2 class="arabic" style="text-align: center; color:black;">تقرير قوائم المواد</h2>
+
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                            <thead>
+                                <tr>
+                                    <th class="arabic"
+                                        style="background-color: #FFCDD2; font-weight: bold; padding: 10px;">
+                                        المنتج</th>
+                                    <th class="arabic"
+                                        style="background-color: #FFCDD2; font-weight: bold; padding: 10px;">الكمية
+                                        المستهدفة</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">
+                                        <t t-esc="doc.product_id.name"/>
+                                    </td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">
+                                        <t t-esc="doc.quantity"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 class="arabic" style="margin-top: 30px; color: #2196F3;">تفاصيل المادة</h3>
+                        <table style="width: 100%; border: 1px solid #ddd; border-collapse: collapse; margin-top: 10px;">
+                            <thead>
+                                <tr>
+<!--
+-->
+                                    <th class="arabic product_id" style="width:150px !important; background-color: #FFCDD2; font-weight: bold; padding: 4px;">المادة</th>
+                                    <th class="arabic product_qty" style="background-color: #FFCDD2; font-weight: bold; padding: 10px;"> الكمية المطلوبة</th>
+                                    <th class="arabic product_uom" style="background-color: #FFCDD2; font-weight: bold; padding: 10px;">الوحدة</th>
+                                    <th class="arabic secondary_product_uom_qty" style="background-color: #FFCDD2; font-weight: bold; padding: 10px;">الكمية الثانوية</th>
+                                    <th class="arabic secondary_product_uom_id" style="background-color: #FFCDD2; font-weight: bold; padding: 10px;">الوحدة الثانوية</th>
+                                    <th class="arabic available_qty" style="background-color: #FFCDD2; font-weight: bold; padding: 10px;">الكمية المتاحة</th>
+                                    <th class="arabic pending_po_product_qty" style="background-color: #FFCDD2; font-weight: bold; padding: 10px;">الكمية المنتظرة</th>
+                                    <th class="arabic target_amount" style="background-color: #FFCDD2; font-weight: bold; padding: 10px;">الكمية المستهدفة</th>
+                                    <th class="arabic amount_state" style="background-color: #FFCDD2; font-weight: bold; padding: 10px;">حالة الكمية</th>
+                                    <th class="arabic remaining_target" style="background-color: #FFCDD2; font-weight: bold; padding: 10px;">باقي المستهدف</th>
+                                    <th class="arabic surplus" style="background-color: #FFCDD2; font-weight: bold; padding: 10px;">الفائض</th>
+                                    <th class="arabic shortage" style="background-color: #FFCDD2; font-weight: bold; padding: 10px;">النقص</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.line_ids" t-as="component">
+
+                                    <tr>
+                                        <td class="arabic product_id" style="border: 1px solid #ddd; padding: 8px;">
+                                            <t t-esc="component.product_id.name"/>
+                                        </td>
+                                        <td class="arabic product_qty" style="border: 1px solid #ddd; padding: 8px;">
+                                            <t t-esc="component.product_qty"/>
+                                        </td>
+                                        <td class="arabic product_uom" style="border: 1px solid #ddd; padding: 8px;">
+                                            <t t-esc="component.product_uom.name"/>
+                                        </td>
+                                        <td class="arabic secondary_product_uom_qty" style="border: 1px solid #ddd; padding: 8px;">
+                                            <t t-esc="component.secondary_product_uom_qty"/>
+                                        </td>
+                                        <td class="arabic secondary_product_uom_id" style="border: 1px solid #ddd; padding: 8px;">
+                                            <t t-esc="component.secondary_product_uom_id.name"/>
+                                        </td>
+                                        <td class="arabic available_qty" style="border: 1px solid #ddd; padding: 8px;">
+                                            <t t-esc="component.available_qty"/>
+                                        </td>
+                                        <td class="arabic pending_po_product_qty" style="border: 1px solid #ddd; padding: 8px;">
+                                            <t t-esc="component.pending_po_product_qty"/>
+                                        </td>
+                                        <td class="arabic target_amount" style="border: 1px solid #ddd; padding: 8px;">
+                                            <t t-esc="component.target_amount"/>
+                                        </td>
+                                        <td class="arabic amount_state" style="border: 1px solid #ddd; padding: 8px;">
+                                            <t t-esc="component.amount_state"/>
+                                        </td>
+                                        <td class="arabic remaining_target" style="border: 1px solid #ddd; padding: 8px;">
+                                            <t t-esc="component.remaining_target"/>
+                                        </td>
+                                        <td class="arabic surplus" style="border: 1px solid #ddd; padding: 8px;">
+                                            <t t-esc="component.surplus"/>
+                                        </td>
+                                        <td class="arabic shortage" style="border: 1px solid #ddd; padding: 8px;">
+                                            <t t-esc="component.shortage"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+
+    </template>
+
+    <record id="action_bom_report" model="ir.actions.report">
+        <field name="name">Bill of Material Report</field>
+        <field name="model">bom.details.reports</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">BOM_details_report.bom_report_template</field>
+        <field name="print_report_name">'تقرير_قائمة_المواد_%s' % (object.product_id.name)</field>
+        <field name="binding_model_id" ref="model_bom_details_reports"/>
+    </record>
+    <record id="action_bom_report_html" model="ir.actions.report">
+        <field name="name">Bill of Material Report HTML</field>
+        <field name="model">bom.wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">BOM_details_report.bom_report_template</field>
+        <field name="binding_model_id" ref="model_bom_wizard"/>
+    </record>
+</odoo>

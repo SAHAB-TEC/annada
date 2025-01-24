@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="bom_report_template">
+        <t t-name="mrp_BOM_details_report.bom_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+
+                    <div class="page">
+                        <h2  class="arabic" style="text-align: center; color:black;">تقرير قوائم المواد</h2>
+
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                            <thead>
+                                <tr>
+                                    <th class="arabic" style="background-color: #FFCDD2; font-weight: bold; padding: 10px;">المنتج</th>
+<!--                                    <th class="arabic" style="background-color: #FFCDD2; font-weight: bold; padding: 10px;">الكمية المستهدفة</th>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">
+                                        <t t-esc="doc.product_id.name"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 class="arabic" style="margin-top: 30px; color: #2196F3;">تفاصيل المادة</h3>
+                        <table style="width: 100%; border: 1px solid #ddd; border-collapse: collapse; margin-top: 10px;">
+                            <thead>
+                                <tr>
+                                    <th class=" arabic" style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">اسم المادة</th>
+                                    <th class=" arabic" style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">رصيد المخازن</th>
+<!--                                    <th class=" arabic" style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">حالة المادة</th>-->
+<!--                                    <th class="arabic" style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">اعتماد | طلبية</th>-->
+<!--                                    <th class="arabic" style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">كمية الفائض</th>-->
+<!--                                    <th class="arabic" style="border: 1px solid #ddd; padding: 8px; background-color: #E0F7FA;">كمية العجز</th>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.components" t-as="component">
+                                    <t t-set="available_qty" t-value="component.qty_available + component.purchased_product_qty"/>
+
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">
+                                            <t t-esc="component.name"/>
+                                        </td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">
+                                            <t t-esc="component.qty_available"/>
+                                        </td>
+<!--                                        <td style="border: 1px solid #ddd; padding: 8px;">-->
+<!--                                            <t t-if="available_qty &gt; component.target_amount">-->
+<!--                                                <t class=" arabic" t-esc="'هناك فائض في الكمية'"/>-->
+<!--                                            </t>-->
+<!--                                            <t t-if="available_qty &lt; component.target_amount">-->
+<!--                                                <t  class="arabic" t-esc="'هناك نقص في الكمية'"/>-->
+<!--                                            </t>-->
+<!--                                        </td>-->
+<!--                                        <td style="border: 1px solid #ddd; padding: 8px;">-->
+<!--                                            <t t-esc="available_qty"/>-->
+<!--                                        </td>-->
+<!--                                        <td style="border: 1px solid #ddd; padding: 8px;">-->
+<!--                                            <t t-esc="component.surplus"/>-->
+<!--                                        </td>-->
+<!--                                        <td style="border: 1px solid #ddd; padding: 8px;">-->
+<!--                                            <t t-esc="component.shortage"/>-->
+<!--                                        </td>-->
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_bom_report" model="ir.actions.report">
+        <field name="name">Bill of Material Report</field>
+        <field name="model">mrp.bom.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mrp_BOM_details_report.bom_report_template</field>
+        <field name="print_report_name">'تقرير_قائمة_المواد_%s' % (object.product_id.name)</field>
+    </record>
+    <record id="action_bom_report_html" model="ir.actions.report">
+        <field name="name">Bill of Material Report</field>
+        <field name="model">mrp.bom.wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">mrp_BOM_details_report.bom_report_template</field>
+        <field name="print_report_name">'تقرير_قائمة_المواد_%s' % (object.product_id.name)</field>
+    </record>
+</odoo>

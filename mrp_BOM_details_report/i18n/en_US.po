@@ -1,0 +1,153 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mrp_BOM_details_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e-20241106\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-07 16:48+0000\n"
+"PO-Revision-Date: 2024-12-07 16:48+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mrp_BOM_details_report
+#: model:ir.ui.menu,name:mrp_BOM_details_report.menu_mrp_bill_of_material_details
+msgid " MRP Bill of Material Details"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.actions.report,print_report_name:mrp_BOM_details_report.action_bom_report
+#: model:ir.actions.report,print_report_name:mrp_BOM_details_report.action_bom_report_html
+msgid "'تقرير_قائمة_المواد_%s' % (object.product_id.name)"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.actions.act_window,name:mrp_BOM_details_report.action_open_mrp_bom_wizard
+msgid "Bill of Material Details"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.actions.report,name:mrp_BOM_details_report.action_bom_report
+#: model:ir.actions.report,name:mrp_BOM_details_report.action_bom_report_html
+msgid "Bill of Material Report"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.model,name:mrp_BOM_details_report.model_mrp_bom_wizard
+msgid "Bill of Material Wizard"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model_terms:ir.ui.view,arch_db:mrp_BOM_details_report.view_bom_wizard
+msgid "Cancel"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.model.fields,field_description:mrp_BOM_details_report.field_mrp_bom_wizard__components
+msgid "Components"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.model.fields,field_description:mrp_BOM_details_report.field_mrp_bom_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.model.fields,field_description:mrp_BOM_details_report.field_mrp_bom_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.model.fields,field_description:mrp_BOM_details_report.field_mrp_bom_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model_terms:ir.ui.view,arch_db:mrp_BOM_details_report.view_bom_wizard
+msgid "Generate BOM Report"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model_terms:ir.ui.view,arch_db:mrp_BOM_details_report.view_bom_wizard
+msgid "Generate Report"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.model.fields,field_description:mrp_BOM_details_report.field_mrp_bom_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.model.fields,field_description:mrp_BOM_details_report.field_mrp_bom_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.model.fields,field_description:mrp_BOM_details_report.field_mrp_bom_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.model.fields,field_description:mrp_BOM_details_report.field_mrp_bom_wizard__product_id
+msgid "Product"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.model,name:mrp_BOM_details_report.model_product_product
+msgid "Product Variant"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.model.fields,field_description:mrp_BOM_details_report.field_mrp_bom_wizard__quantity
+msgid "Quantity"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.model.fields,field_description:mrp_BOM_details_report.field_product_product__shortage
+msgid "Shortage"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.model.fields,field_description:mrp_BOM_details_report.field_product_product__surplus
+msgid "Surplus"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model:ir.model.fields,field_description:mrp_BOM_details_report.field_product_product__target_amount
+msgid "Target Amount"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model_terms:ir.ui.view,arch_db:mrp_BOM_details_report.view_bom_wizard
+msgid "View Report"
+msgstr "عرض التقرير"
+
+#. module: mrp_BOM_details_report
+#: model_terms:ir.ui.view,arch_db:mrp_BOM_details_report.bom_report_template
+msgid "اسم المادة"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model_terms:ir.ui.view,arch_db:mrp_BOM_details_report.bom_report_template
+msgid "المنتج"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model_terms:ir.ui.view,arch_db:mrp_BOM_details_report.bom_report_template
+msgid "تفاصيل المادة"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model_terms:ir.ui.view,arch_db:mrp_BOM_details_report.bom_report_template
+msgid "تقرير قوائم المواد"
+msgstr ""
+
+#. module: mrp_BOM_details_report
+#: model_terms:ir.ui.view,arch_db:mrp_BOM_details_report.bom_report_template
+msgid "رصيد المخازن"
+msgstr ""

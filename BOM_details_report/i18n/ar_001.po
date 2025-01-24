@@ -1,0 +1,407 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* BOM_details_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-05 16:30+0000\n"
+"PO-Revision-Date: 2025-01-05 16:30+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: BOM_details_report
+#: model:ir.actions.report,print_report_name:BOM_details_report.action_bom_report
+msgid "'تقرير_قائمة_المواد_%s' % (object.product_id.name)"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__amount_state
+#: model:ir.model.fields,field_description:BOM_details_report.field_product_product__amount_state
+msgid "Amount State"
+msgstr "الحالة"
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__available_qty
+#: model:ir.model.fields,field_description:BOM_details_report.field_product_product__available_qty
+msgid "Available Quantity"
+msgstr "الكمية المتاحة"
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports__bom_id
+msgid "BOM"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__bom_product_qty
+msgid "BOM Quantity"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.actions.act_window,name:BOM_details_report.action_open_bom_wizard
+msgid "Bill of Material Details"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.actions.report,name:BOM_details_report.action_bom_report
+msgid "Bill of Material Report"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.actions.report,name:BOM_details_report.action_bom_report_html
+msgid "Bill of Material Report HTML"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model,name:BOM_details_report.model_bom_wizard
+msgid "Bill of Material Wizard"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__bom_id
+msgid "Bom"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.ui.menu,name:BOM_details_report.menu_bom_details_reports
+msgid "Bom Details Form"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.actions.act_window,name:BOM_details_report.action_bom_details_reports
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.view_bom_details_reports_form
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.view_bom_details_reports_tree
+msgid "Bom Details Reports"
+msgstr ""
+
+#. module: BOM_details_report
+#. odoo-python
+#: code:addons/BOM_details_report/models/bom_details_reports.py:0
+#: model:ir.model,name:BOM_details_report.model_bom_details_reports
+#, python-format
+msgid "BomDetailsReports"
+msgstr ""
+
+#. module: BOM_details_report
+#. odoo-python
+#: code:addons/BOM_details_report/models/bom_details_reports.py:0
+#: model:ir.model,name:BOM_details_report.model_bom_details_reports_lines
+#, python-format
+msgid "BomDetailsReportsLines"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.view_bom_wizard
+msgid "Cancel"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__product_uom_category_id
+msgid "Category"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports__components
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_wizard__components
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.view_bom_details_reports_form
+msgid "Components"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,help:BOM_details_report.field_bom_details_reports_lines__product_uom_category_id
+msgid ""
+"Conversion between Units of Measure can only occur if they belong to the "
+"same category. The conversion will be made based on the ratios."
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports__create_uid
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__create_uid
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports__create_date
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__create_date
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports__display_name
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__display_name
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,help:BOM_details_report.field_bom_details_reports_lines__secondary_uom_ids
+msgid "For fetching all the secondary uom's"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.view_bom_wizard
+msgid "Generate BOM Report"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.view_bom_wizard
+msgid "Generate Report"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports__id
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__id
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__is_secondary_readonly
+msgid "Is Secondary Uom"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports__write_uid
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__write_uid
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports__write_date
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__write_date
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports__line_ids
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.view_bom_details_reports_form
+msgid "Lines"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields.selection,name:BOM_details_report.selection__bom_details_reports_lines__amount_state__normal
+#: model:ir.model.fields.selection,name:BOM_details_report.selection__product_product__amount_state__normal
+msgid "Normal"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__parent_qty
+msgid "Parent Quantity"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__pending_po_product_qty
+msgid "Pending Purchased"
+msgstr "الطلبيات"
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.view_bom_details_reports_form
+msgid "Print"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports__product_id
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__product_id
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_wizard__product_id
+msgid "Product"
+msgstr "المنتج"
+
+#. module: BOM_details_report
+#: model:ir.model,name:BOM_details_report.model_product_product
+msgid "Product Variant"
+msgstr "متغير المنتج "
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.view_bom_details_reports_form
+msgid "Product..."
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports__quantity
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__product_qty
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_wizard__quantity
+msgid "Quantity"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__remaining_target
+msgid "Remaining Target"
+msgstr "باقي المستهدف"
+
+#. module: BOM_details_report
+#: model:res.groups,name:BOM_details_report.group_reports_access
+msgid "Reports Access"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__secondary_product_uom_qty
+msgid "Secondary Quantity"
+msgstr "كمية الوحدة"
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__secondary_product_uom_id
+msgid "Secondary UoM"
+msgstr "الوحدة الثانية"
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__secondary_uom_ids
+msgid "Secondary Uom Ids"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,help:BOM_details_report.field_bom_details_reports_lines__secondary_product_uom_id
+msgid "Select the Secondary Uom"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,help:BOM_details_report.field_bom_details_reports_lines__secondary_product_uom_qty
+msgid "Select the Secondary Uom Quantity"
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__shortage
+#: model:ir.model.fields,field_description:BOM_details_report.field_product_product__shortage
+#: model:ir.model.fields.selection,name:BOM_details_report.selection__bom_details_reports_lines__amount_state__shortage
+#: model:ir.model.fields.selection,name:BOM_details_report.selection__product_product__amount_state__shortage
+msgid "Shortage"
+msgstr "العجز"
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__surplus
+#: model:ir.model.fields,field_description:BOM_details_report.field_product_product__surplus
+#: model:ir.model.fields.selection,name:BOM_details_report.selection__bom_details_reports_lines__amount_state__surplus
+#: model:ir.model.fields.selection,name:BOM_details_report.selection__product_product__amount_state__surplus
+msgid "Surplus"
+msgstr "الفائض"
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__target_amount
+#: model:ir.model.fields,field_description:BOM_details_report.field_product_product__target_amount
+msgid "Target Amount"
+msgstr "المستهدف"
+
+#. module: BOM_details_report
+#: model:ir.model.fields,help:BOM_details_report.field_bom_details_reports_lines__is_secondary_readonly
+msgid ""
+"The field to check whether the selected uom is secondary and if yes then "
+"make the field readonly"
+msgstr ""
+
+#. module: BOM_details_report
+#. odoo-python
+#: code:addons/BOM_details_report/models/bom_details_reports.py:0
+#, python-format
+msgid "The selected UoM's are not in the same category."
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.actions.act_window,help:BOM_details_report.action_bom_details_reports
+msgid "There is no examples click here to add new Bom Details Reports."
+msgstr ""
+
+#. module: BOM_details_report
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports__uom_id
+#: model:ir.model.fields,field_description:BOM_details_report.field_bom_details_reports_lines__product_uom
+msgid "Unit of Measure"
+msgstr "الوحدة"
+
+#. module: BOM_details_report
+#: model:ir.model.fields,help:BOM_details_report.field_bom_details_reports__uom_id
+msgid "Unit of measure for the quantity"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "الفائض"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid ""
+"الكمية\n"
+"                                        المستهدفة"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "الكمية الثانوية"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "الكمية المتاحة"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "الكمية المستهدفة"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "الكمية المطلوبة"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "الكمية المنتظرة"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "المادة"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "المنتج"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "النقص"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "الوحدة"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "الوحدة الثانوية"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "باقي المستهدف"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "تفاصيل المادة"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "تقرير قوائم المواد"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.bom_report_template
+msgid "حالة الكمية"
+msgstr ""
+
+#. module: BOM_details_report
+#: model_terms:ir.ui.view,arch_db:BOM_details_report.view_bom_wizard
+msgid "عرض التقرير"
+msgstr ""

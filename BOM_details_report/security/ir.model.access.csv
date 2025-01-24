@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bom_wizard_manager,bom.wizard access (Manager),model_bom_wizard,,1,1,1,1
+access_bom_wizard_user,bom.wizard access (User),model_bom_wizard,,1,1,1,1
+access_bom_details_reports_manager,bom_details_reports_manager,model_bom_details_reports,,1,1,1,1
+access_bom_details_reports_user,bom_details_reports_user,model_bom_details_reports_lines,,1,1,1,1
