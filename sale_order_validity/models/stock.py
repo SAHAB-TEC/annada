@@ -9,18 +9,59 @@ from odoo.addons import decimal_precision as dp
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools.float_utils import float_round, float_compare, float_is_zero
 from dateutil.relativedelta import relativedelta
+import datetime
 
+
+class StockLotDisplayName(models.Model):
+    _inherit = 'stock.lot'
+    _rec_name = 'display_name_1'
+
+    display_name_1 = fields.Char(string='Display Name', compute='_compute_display_name_1', store=True)
+
+    @api.depends('name', 'expiration_date')
+    def _compute_display_name_1(self):
+        for rec in self:
+            rec.display_name_1 = '%s%s' % (rec.name and '[%s] ' % rec.name or '', rec.expiration_date)
+
+    @api.depends('name', 'expiration_date')
+    def name_get(self):
+        """
+            to use retrieving the name, combination of `hotel name & room name`
+        """
+        res = []
+        for rec in self:
+            # name = [name] expiration_date
+            name = '%s%s' % (rec.name and '[%s] ' % rec.name or '', rec.expiration_date)
+            res.append((rec.id, name))
+        return res
 
 class StockMoveLine(models.Model):
     _inherit = 'stock.move.line'
 
     def _get_lot_name(self):
         print("*** _get_lot_name *****", self._context.get('show_lots_text'))
-        if self._context.get('show_lots_text'):
-            l = self.env['ir.sequence'].next_by_code('stock.move.line') or 'lot'
-            return l
+        # if self._context.get('show_lots_text'):
+        l = self.env['ir.sequence'].next_by_code('stock.move.line') or 'lot'
+        return l
 
     lot_name = fields.Char(default=_get_lot_name)
+
+    @api.depends('product_id', 'lot_id.expiration_date', 'picking_id.scheduled_date')
+    def _compute_expiration_date(self):
+        for move_line in self:
+
+            exp_date = move_line.move_id.purchase_line_id.expired_date or False
+            if exp_date:
+                move_line.expiration_date = exp_date
+            elif move_line.lot_id.expiration_date:
+                move_line.expiration_date = move_line.lot_id.expiration_date
+            elif move_line.picking_type_use_create_lots:
+                if move_line.product_id.use_expiration_date:
+                    if not move_line.expiration_date:
+                        from_date = move_line.picking_id.scheduled_date or fields.Datetime.today()
+                        move_line.expiration_date = from_date + datetime.timedelta(days=move_line.product_id.expiration_time)
+                else:
+                    move_line.expiration_date = False
 
     def _get_value_production_lot(self):
         res = super()._get_value_production_lot()
@@ -46,11 +87,3 @@ class StockMoveLine(models.Model):
         return res
 
 
-class StockLotDisplayName(models.Model):
-    _inherit = 'stock.lot'
-
-    def name_get(self):
-        self.browse(self.ids).read(['name', 'expiration_date'])
-        return [
-            (template.id, '%s%s' % (template.name and '[%s] ' % template.name or '', template.expiration_date))
-            for template in self]

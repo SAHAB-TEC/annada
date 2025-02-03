@@ -6,10 +6,11 @@
     "category": "",
     'summary': 'Delegate Sales ',
     "author": "Ahmed Amen",
-    "depends": ['base', 'sale', 'hr'],
+    "depends": ['base', 'sale', 'hr', 'hr_payroll_account', 'account'],
     "data": [
         'security/ir.model.access.csv',
         'view/delegate_validity_view.xml',
+        'view/tmp.xml',
     ],
     "auto_install": False,
     "installable": True,

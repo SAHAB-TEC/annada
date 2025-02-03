@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View hr.employee form -->
+    <record id="view_hr_employee_form" model="ir.ui.view">
+        <field name="name">view.hr.employee.form</field>
+        <field name="model">hr.employee</field>        
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='study_school']" position="after">
+                <field name="university" />
+                <field name="faculty" />
+                <field name="department"/>
+            </xpath>
+            <xpath expr="//field[@name='work_email']" position="after">
+                <field name="administration" />
+                <field name="job_title" />
+                <field name="start_date" />
+                <field name="end_date" />
+            </xpath>
+
+            <xpath expr="//field[@name='department_id']" position="before">
+                <field name="years_of_experience" />
+                <field name="phone_1" />
+                <field name="phone_2" />
+            </xpath>
+            <xpath expr="//field[@name='passport_id']" position="after">
+                <field name="release_date" />
+                <field name="expiration_date" />
+                <field name="national_id" />
+                
+            </xpath>
+            
+            <xpath expr="//field[@name='country_of_birth']" position="after">
+                <field name="city_of_birth" />
+                <field name="municipal" />
+                <field name="district" />
+            </xpath>
+
+            <xpath expr="//field[@name='work_location_id']" position="after">
+                <field name="other_work_location_id" />
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

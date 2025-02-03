@@ -1,0 +1,74 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* rgb_hr_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-19 02:33+0000\n"
+"PO-Revision-Date: 2024-05-19 02:33+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: rgb_hr_custom
+#: model:ir.model.fields,field_description:rgb_hr_custom.field_hr_employee__city_of_birth
+msgid "City"
+msgstr "المدينة"
+
+#. module: rgb_hr_custom
+#: model:ir.model.fields,field_description:rgb_hr_custom.field_hr_employee__department
+msgid "Department"
+msgstr "القسم في الكلية"
+
+#. module: rgb_hr_custom
+#: model:ir.model.fields,field_description:rgb_hr_custom.field_hr_employee__district
+msgid "District"
+msgstr "الحي"
+
+#. module: rgb_hr_custom
+#: model:ir.model.fields,field_description:rgb_hr_custom.field_hr_employee__expiration_date
+msgid "Expiration Date"
+msgstr "تاريخ الانتهاء"
+
+#. module: rgb_hr_custom
+#: model:ir.model.fields,field_description:rgb_hr_custom.field_hr_employee__faculty
+msgid "Faculty"
+msgstr "الكلية"
+
+#. module: rgb_hr_custom
+#. odoo-python
+#: code:addons/rgb_hr_custom/models/hr_employee.py:0
+#: model:ir.model,name:rgb_hr_custom.model_hr_employee
+#, python-format
+msgid "HrEmployee"
+msgstr "الموظف"
+
+#. module: rgb_hr_custom
+#: model:ir.model.fields,field_description:rgb_hr_custom.field_hr_employee__municipal
+msgid "Municipal/Region"
+msgstr "البلدية"
+
+#. module: rgb_hr_custom
+#: model:ir.model.fields,field_description:rgb_hr_custom.field_hr_employee__national_id
+msgid "National ID"
+msgstr "الرقم الوطني"
+
+#. module: rgb_hr_custom
+#: model:ir.model.fields,field_description:rgb_hr_custom.field_hr_employee__other_work_location_id
+msgid "Other Work Location"
+msgstr "مكان العمل الاخر"
+
+#. module: rgb_hr_custom
+#: model:ir.model.fields,field_description:rgb_hr_custom.field_hr_employee__release_date
+msgid "Release Date"
+msgstr "تاريخ الاصدار"
+
+#. module: rgb_hr_custom
+#: model:ir.model.fields,field_description:rgb_hr_custom.field_hr_employee__university
+msgid "University"
+msgstr "الجامعة"

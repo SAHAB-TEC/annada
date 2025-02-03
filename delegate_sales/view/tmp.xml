@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="aged_receivable_report_template">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <div class="header">
+                        <h1>Aged Receivable Report</h1>
+                        <p>As of
+                            <span t-esc="context_today"/>
+                        </p>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Invoice Date</th>
+                                    <th>Expected Date</th>
+                                    <th>Currency</th>
+                                    <th>Partner</th>
+                                    <th>Amount</th>
+                                    <th>1-30 Days</th>
+                                    <th>31-60 Days</th>
+                                    <th>61-90 Days</th>
+                                    <th>91-120 Days</th>
+                                    <th>Over 120 Days</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-if="docs">
+                                    <t t-foreach="docs" t-as="line">
+                                        <tr>
+                                            <td t-esc="line.invoice_date"/>
+                                            <td t-esc="line.expected_date"/>
+                                            <td t-esc="line.currency_id.name"/>
+                                            <td t-esc="line.partner_id.name"/>
+                                            <td t-esc="line.account_id.name"/>
+                                            <td t-esc="line.amount"/>
+                                            <td t-esc="line.aging_1_30"/>
+                                            <td t-esc="line.aging_31_60"/>
+                                            <td t-esc="line.aging_61_90"/>
+                                            <td t-esc="line.aging_91_120"/>
+                                            <td t-esc="line.aging_over_120"/>
+                                            <td t-esc="line.total"/>
+                                        </tr>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <tr>
+                                        <td colspan="11" class="text-center">No data available.</td>
+                                    </tr>
+                                </t>
+
+<!--                                totals-->
+                                <tr class="tr-sum-total" style="color:darkblue; background-color:#ddd">
+                                    <td colspan="4" class="text-right">Total</td>
+                                    <td t-esc="sum(o.amount for o in docs)"/>
+                                    <td t-esc="sum(o.aging_1_30 for o in docs)"/>
+                                    <td t-esc="sum(o.aging_31_60 for o in docs)"/>
+                                    <td t-esc="sum(o.aging_61_90 for o in docs)"/>
+                                    <td t-esc="sum(o.aging_91_120 for o in docs)"/>
+                                    <td t-esc="sum(o.aging_over_120 for o in docs)"/>
+                                    <td t-esc="sum(o.total for o in docs)"/>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <!--        portrate paperformate-->
+        <record model="report.paperformat" id="paperformat_aged_receivable_report">
+            <field name="name">Aged Receivable Report</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <!--        Landscape-->
+        <record model="report.paperformat" id="paperformat_aged_receivable_report_landscape">
+            <field name="name">Aged Receivable Report</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="action_aged_receivable_report" model="ir.actions.report">
+            <field name="name">Aged Receivable Report</field>
+            <field name="model">aged.receivable.report</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">delegate_sales.aged_receivable_report_template</field>
+            <field name="binding_model_id" ref="base.model_res_partner"/>
+            <field name="paperformat_id" ref="paperformat_aged_receivable_report_landscape"/>
+        </record>
+
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button string="Print Aged Receivable Report" type="object" name="print_aged_receivable_report"
+                            class="btn-primary"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -21,6 +21,8 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='ref']" position="after">
                 <field name="delegate_pay_id"/>
+                <field name="max_sale_amount" invisible="delegate_pay_id == False"/>
+                <field name="remaining_total" invisible="delegate_pay_id == False"/>
             </xpath>
         </field>
     </record>
@@ -48,7 +50,7 @@
             </xpath>
             <xpath expr="//notebook/page[@name='order_lines']/field/tree/field[@name='product_template_id']"
                    position="after">
-                <field name="stock_lot_ids" invisible="1"/>
+                <field name="stock_lot_ids" column_invisible="1"/>
             </xpath>
             <xpath expr="//notebook/page[@name='order_lines']/field/tree/field[@name='lot_expire_id']"
                    position="attributes">
@@ -74,6 +76,15 @@
                             <field name="total_sale" widget='monetary'/>
                         </span>
                         <span class="o_stat_text">Sales</span>
+                    </div>
+                </button>
+                <button type="object" class="oe_stat_button" icon="fa-pencil-square-o"
+                        name="action_view_invoices">
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="inv_total" />
+                        </span>
+                        <span class="o_stat_text">Invoices</span>
                     </div>
                 </button>
                 <button type="object" class="oe_stat_button" icon="fa-pencil-square-o"
@@ -121,6 +132,7 @@
 <!--            </xpath>-->
 <!--        </field>-->
 <!--    </record>-->
+
 
 
 </odoo>

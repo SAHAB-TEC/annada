@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <!--  Template for Rgb Dashboard  -->
+    <t t-name="RgbReports">
+
+        <div class="dashboard_main">
+            <div class="row main-section">
+                <div class="col-md-4 col-lg-4">
+                    <div class="hr_notification" style="background: #fff;transition: transform 0.2s ease, box-shadow 0.2s ease;will-change: transform, box-shadow;box-shadow: 0 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);
+                    height: 316px;overflow-y: auto;margin-bottom: 15px;">
+                        <div class="hr_notification_head"
+                             style="font-size: 17px;text-align: center;padding: 12px 0;color: #fff;font-weight: 300;background: #de6a5e;margin-bottom: 9px;">
+                       Journals Balance
+                        </div>
+                        <t t-if="state.journal_balance">
+                            <div class="col-sm-12 col-lg-12" style="padding:0;">
+                            <div class="text-color">
+                                <div class="">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <table class="table table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th rowspan="12">Name&#160;&#160;&#160;</th>
+                                                        <th rowspan="12">Balance</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-foreach="state.journal_balance" t-as="journal" t-key="journal.id || journal_index">
+                                                        <tr>
+                                                            <td>
+                                                                <h2 class="text-color display-6"
+                                                                    style="font-size: 15px;">
+                                                                    <t t-esc="journal['journal_name']"/>
+                                                                </h2>
+                                                            </td>
+                                                            <td>
+                                                                <h2 class="text-color display-6"
+                                                                    style="font-size: 15px;">
+                                                                    <t t-esc="journal['balance']"/>
+                                                                </h2>
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </t>
+                    </div>
+                </div>
+
+                <!--                mrp-->
+                <div class="col-md-4 col-lg-4">
+                    <div class="hr_notification" style="background: #fff;transition: transform 0.2s ease, box-shadow 0.2s ease;will-change: transform, box-shadow;box-shadow: 0 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);
+                    height: 316px;overflow-y: auto;margin-bottom: 15px;">
+                        <div class="hr_notification_head"
+                             style="font-size: 17px;text-align: center;padding: 12px 0;color: #fff;font-weight: 300;background: #de6a5e;margin-bottom: 9px;">
+                            MRP Report
+                        </div>
+
+                        <!-- mrp report -->
+                        <t t-if="state.mrp_dashboard_data">
+                            <div class="col-sm-12 col-lg-12" style="padding:0;">
+                            <div class="text-color mrp_report">
+                                <div class="">
+                                    <div class="media">
+                                        <div>
+                                            <input type="date" id="mrp_date_from" class="form-control"
+                                                   style="width: 30%;margin: 0 auto;display:inline"/>
+                                            <input type="date" id="mrp_date_to" class="form-control"
+                                                   style="width: 30%;margin: 0 auto;display:inline"/>
+                                            <button class="btn btn-success" id="mrp_search"
+                                                    t-on-click="onclick_mrp_search">
+                                                Search
+                                            </button>
+                                        </div>
+                                        <div class="media-body">
+                                            <!-- get_mrp_dashboard_data -->
+                                            <table class="table table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th rowspan="12">Name&#160;&#160;&#160;</th>
+                                                        <th rowspan="12">Value</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-foreach="state.mrp_dashboard_data" t-as="mrp" t-key="mrp.id || mrp_index">
+                                                        <tr>
+                                                            <td>
+                                                                <h2 class="text-color display-6"
+                                                                    style="font-size: 15px;">
+                                                                    <t t-esc="mrp['product_name']"/>
+                                                                </h2>
+                                                            </td>
+
+                                                            <td>
+                                                                <h2 class="text-color display-6"
+                                                                    style="font-size: 15px;">
+                                                                    <t t-esc="mrp['value']"/>
+                                                                </h2>
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </t>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="dashboard_mrp">
+
+        </div>
+    </t>
+</templates>

@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_commission_delegate,commission.delegate,model_commission_delegate,,1,1,1,1
+access_delegate_region,delegate.region,model_delegate_region,,1,1,1,1
+access_delegate_region_lines,delegate.region.lines,model_delegate_region_lines,,1,1,1,1
+access_aged_receivable_report,aged.receivable.report,model_aged_receivable_report,,1,1,1,1
 

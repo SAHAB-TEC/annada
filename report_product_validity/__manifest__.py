@@ -6,7 +6,7 @@
     "category": "Product",
     'summary': 'Product Validity',
     "author": "Ahmed Amen",
-    "depends": ['base', 'stock','product_expiry'],
+    "depends": ['base', 'stock','product_expiry', 'sale'],
     "data": [
         'security/ir.model.access.csv',
         'report/report_product_validity.xml',
