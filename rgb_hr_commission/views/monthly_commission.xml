@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    model = monthly.commission-->
+<!--    lines = monthly.commission.line-->
+<!--    view = monthly.commission.view-->
+<!--    action = monthly.commission.action-->
+<!--    menu = monthly.commission.menu-->
+
+    <!-- View monthly.commission.form -->
+    <record id="view_monthly_commission_form" model="ir.ui.view">
+        <field name="name">view.monthly.commission.form</field>
+        <field name="model">monthly.commission</field>
+        <field name="arch" type="xml">
+            <form string="Monthly Commission">
+                <header>
+                    <button name="action_compute_lines" string="Get Data" type="object" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="year"/>
+                        <field name="month"/>
+                        <field name="commission_types"/>
+                    </group>
+                    <notebook>
+                        <page string="Commission Lines">
+                            <field name="lines">
+                                <tree edit="False" create="False" delete="False">
+                                    <field name="employee_id"/>
+                                    <field name="commission_types"/>
+                                    <field name="year"/>
+                                    <field name="month"/>
+                                    <field name="target_payment_amount"/>
+                                    <field name="total_payments"/>
+                                    <field name="target_rate"/>
+                                    <field name="total_commission"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action monthly.commission.action -->
+    <record id="action_monthly_commission" model="ir.actions.act_window">
+        <field name="name">Monthly Commission</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">monthly.commission</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu monthly.commission.menu -->
+    <menuitem
+            id="menu_monthly_commission"
+            name="Monthly Commission"
+            parent="sale.sale_menu_root"
+            action="rgb_hr_commission.action_monthly_commission"
+            sequence="10"/>
+
+<!--    menu = monthly.commission.menu-->
+
+</odoo>

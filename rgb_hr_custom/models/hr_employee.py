@@ -38,3 +38,4 @@ class HrEmployeePublic(models.Model):
     _inherit = 'hr.employee.public'
 
     timesheet_manager_id = fields.Many2one('hr.employee', string='Timesheet Manager')
+

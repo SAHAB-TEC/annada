@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit the HR employee form view and add new fields -->
+    <record id="view_hr_employee_form" model="ir.ui.view">
+        <field name="name">view.hr.employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_properties']" position="before">
+                <!-- Commission Details -->
+                <group>
+                    <group string="Commission Details">
+                        <field name="commission_type"/>
+                        <field name="target_payment_amount"/>
+                        <field name="min_target"/>
+                        <field name="max_commission"/>
+                        <field name="max_salary"/>
+                        <field name="warehouse_rate" invisible="commission_type != 'warehouse'"/>
+                    </group>
+
+                    <!-- Employee Assignments -->
+                    <group string="Employee Assignments"
+                           invisible="commission_type != 'warehouse'">
+                        <field name="retail_employees" widget="many2many_tags"/>
+                        <field name="wholesale_employees" widget="many2many_tags"/>
+                    </group>
+
+                    <!-- Commission Plans -->
+                    <group string="Commission Plans"
+                           invisible="commission_type not in ['sales_retail', 'warehouse']">
+                        <field name="first_pln" required="commission_type in ['sales_retail']"/>
+                        <field name="second_pln" invisible="commission_type != 'sales_retail'"
+                               required="commission_type == 'sales_retail'"/>
+                        <field name="third_pln" invisible="commission_type != 'sales_retail'"
+                               required="commission_type == 'sales_retail'"/>
+                        <field name="fourth_pln" invisible="commission_type != 'sales_retail'"
+                               required="commission_type == 'sales_retail'"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

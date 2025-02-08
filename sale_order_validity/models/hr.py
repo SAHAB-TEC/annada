@@ -81,7 +81,6 @@ class HrEmployee(models.Model):
     def action_view_payment(self):
         self.ensure_one()
         payment_ids = self.env['account.payment'].search([('delegate_pay_id', '=', self.id)])
-        print("payment_ids===<>", payment_ids)
         action = {
             'res_model': 'account.payment',
             'type': 'ir.actions.act_window',
