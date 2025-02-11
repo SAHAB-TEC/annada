@@ -140,7 +140,7 @@ class MonthlyCommissionLine(models.Model):
 
                 if record.total_payments < first_pln:
                     commission = record.total_payments * 0.005
-                elif record.total_payments < second_pln:
+                elif record.total_payments == first_pln:
                     commission = record.total_payments * 0.01
                 elif record.total_payments < third_pln:
                     comm1 = second_pln * 0.01
