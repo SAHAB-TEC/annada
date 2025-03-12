@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View product.change.uom form -->
+    <record id="view_product_change_uom_form" model="ir.ui.view">
+        <field name="name">view.product.change.uom.form</field>
+        <field name="model">product.change.uom</field>
+        <field name="arch" type="xml">
+            <form string="Product Change Uom">
+                <div class="oe_title">
+                    <label for="uom_id"/>
+                    <h1>
+                        <field name="uom_id" placeholder="New Unit..."/>
+                    </h1>
+                </div>
+                <field name="product_ids" widget="many2many_tags"/>
+                <footer>
+                    <button name="action_change_uom" type="object" string="Change" class="oe_highlight"/>
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action product.change.uom -->
+    <record id="action_product_change_uom" model="ir.actions.act_window">
+        <field name="name">Product Change Uom</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.change.uom</field>
+        <field name="view_mode">form</field>
+        <field name="binding_model_id" ref="product.model_product_product"/>
+        <field name="target">new</field>
+        <!-- context -->
+        <field name="context">{
+            'default_product_ids': active_ids,
+        }</field>
+    </record>
+
+</odoo>

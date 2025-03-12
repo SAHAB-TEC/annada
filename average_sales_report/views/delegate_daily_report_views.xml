@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View delegate.daily.report View Tree -->
+    <record id="view_delegate_daily_report_tree" model="ir.ui.view">
+        <field name="name">view.delegate.daily.report.tree</field>
+        <field name="model">delegate.daily.report</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View delegate.daily.report form -->
+    <record id="view_delegate_daily_report_form" model="ir.ui.view">
+        <field name="name">view.delegate.daily.report.form</field>
+        <field name="model">delegate.daily.report</field>
+        <field name="arch" type="xml">
+            <form string="Delegate Daily Report">
+
+                <header>
+                    <button name="generate_report" string="Refresh Report" type="object" class="oe_highlight"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <field name="employee_id"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Delegate Daily Report Line">
+                            <field name="line_ids">
+                                <tree string="Delegate Daily Report Line">
+                                    <field name="date"/>
+                                    <field name="sale_ids" widget="many2many_tags"/>
+                                    <field name="sale_amount" sum="Sales"/>
+                                    <field name="payment_ids" widget="many2many_tags"/>
+                                    <field name="payment_amount" sum="Payments"/>
+                                </tree>
+                                
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Action delegate.daily.report -->
+    <record id="action_delegate_daily_report" model="ir.actions.act_window">
+        <field name="name">Delegate Daily Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delegate.daily.report</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new Delegate Daily Report.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu delegate.daily.report -->
+    <menuitem id="menu_delegate_daily_report" name="Delegate Daily Report" parent="sale.menu_sale_report" action="action_delegate_daily_report"/>
+</odoo>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View mrp.delegate View Tree -->
+    <record id="view_mrp_delegate_tree" model="ir.ui.view">
+        <field name="name">view.mrp.delegate.tree</field>
+        <field name="model">mrp.delegate</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="product_ids" widget="many2many_tags"/>
+                <field name="employee_ids" widget="many2many_tags"/>
+                <field name="shift_name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View mrp.delegate form -->
+    <record id="view_mrp_delegate_form" model="ir.ui.view">
+        <field name="name">view.mrp.delegate.form</field>
+        <field name="model">mrp.delegate</field>
+        <field name="arch" type="xml">
+            <form string="Mrp Delegate">
+                <header>
+                    <button name="action_delegate_refresh" string="Refresh" type="object" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="product_ids" widget="many2many_tags"/>
+                        <field name="employee_ids" widget="many2many_tags"/>
+                        <field name="shift_name"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Lines">
+                            <field name="line_ids" widget="one2many">
+                                <tree string="Lines" editable="bottom">
+                                    <field name="employee_id"/>
+                                    <field name="mo_id"/>
+                                    <field name="product_id"/>
+                                    <field name="qty"/>
+                                    <field name="date"/>
+                                    <field name="shift_name"/>
+                                </tree>
+                            
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action mrp.delegate -->
+    <record id="action_mrp_delegate" model="ir.actions.act_window">
+        <field name="name">Mrp Delegate</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.delegate</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new Mrp Delegate.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu mrp.delegate -->
+    <menuitem id="menu_mrp_delegate" name="Mrp Delegate" parent="mrp.menu_mrp_root" action="action_mrp_delegate"/>
+
+
+    <data>
+        <record id="report_mrp_delegate" model="ir.actions.report">
+            <field name="name">Delegate Mrp</field>
+            <field name="model">mrp.delegate</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">rgb_mrp_custom.mrp_delegate_report</field>
+            <field name="report_file">rgb_mrp_custom.mrp_delegate_report</field>
+            <field name="binding_model_id" ref="model_mrp_delegate"/>
+        </record>
+
+    </data>
+</odoo>
