@@ -34,11 +34,12 @@
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': 'https://www.cybrosys.com',
-    'depends': ['base', 'sale_management'],
-    'data': [
-        'security/ir.model.access.csv',
-        'views/product_product_views.xml',
-        'views/sale_order_line_views.xml',
+    'depends': ['base', 'sale_management', 'stock'],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/product_product_views.xml",
+        "views/sale_order_line_views.xml",
+        "wizard/product_change_uom.xml"
     ],
     'assets': {
         'web.assets_backend': [

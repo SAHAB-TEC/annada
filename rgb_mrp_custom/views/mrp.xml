@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- mrp.mrp_production_form_view -->
+    <record id="mrp_production_form_view" model="ir.ui.view">
+        <field name="name">mrp.mrp_production_form_view</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="before">
+                <field name="main_qty" invisible="main_qty == 0"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Production Date" name="production_date">
+                    <group>
+                        <field name="can_edit_date_done" invisible="1"/>
+                        <field name="shift_name"/>
+                        <field name="date_done" readonly="can_edit_date_done == False"/>
+                        <field name="day_done_name" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_mrp_production_form_inherit_timer" model="ir.ui.view">
+        <field name="name">mrp.production.form.inherit.timer</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="is_timer_running" invisible="1"/>
+                <button name="action_start_timer" type="object" string="Start" icon="fa-play"
+                        invisible="is_timer_running == True"/>
+                <!-- <button name="action_pause_timer" type="object" string="Pause" icon="fa-pause" invisible="is_timer_running == False"/>
+                <button name="action_resume_timer" type="object" string="Resume" icon="fa-play-circle" invisible="is_timer_running == True"/> -->
+                <button name="action_stop_timer" type="object" string="Stop" icon="fa-stop"
+                        invisible="is_timer_running == False" class="oe_highlight"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Timesheets">
+                    <field name="timesheet_ids">
+                        <tree editable="bottom">
+                            <field name="date"/>
+                            <field name="unit_amount"/>
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="Stop Records">
+                    <field name="stop_times">
+                        <tree>
+                            <field name="start_time"/>
+                            <field name="end_time"/>
+                            <field name="duration"/>
+                            <field name="stop_reason"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <field name="start_time"/>
+                                <field name="end_time"/>
+                                <field name="duration"/>
+                                <field name="stop_reason"/>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <!--    inherit template "mrp.report_mrporder" qweb-->
+    <template id="report_mrporder_inherit" inherit_id="mrp.report_mrporder">
+        <xpath expr="//div[@t-if='o.move_raw_ids']" position="after">
+            <div class="row mt32 mb32">
+                <div class="col-6" t-if="o.shift_name">
+                    <strong>توقيع المسلم</strong>
+                    <br/>
+                    <field t-esc="o.deliverer_job_name"/>
+                </div>
+                <div class="col-6" t-if="o.date_done" style="text-align: right;">
+                    <strong>توقيع المستلم</strong>
+                    <br/>
+                    <field t-esc="o.recipient_job_name"/>
+                </div>
+
+            </div>
+        </xpath>
+        <xpath expr="//div[@t-if='o.qty_producing']/.." position="after">
+            <div class="row mt32 mb32">
+                <div class="col-3" t-if="o.shift_name">
+                    <strong>Shift:</strong>
+                    <br/>
+                    <span t-field="o.shift_name"></span>
+                </div>
+                <div class="col-3" t-if="o.date_done">
+                    <strong>Date:</strong>
+                    <br/>
+                    <span t-field="o.date_done"></span>
+                </div>
+                <div class="col-3" t-if="o.day_done_name">
+                    <strong>Day:</strong>
+                    <br/>
+                    <span t-field="o.day_done_name"></span>
+                </div>
+                <div class="col-3" t-if="o.main_qty > 0">
+                    <strong>Main Quantity:</strong>
+                    <br/>
+                    <span t-field="o.main_qty"></span>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+
+    <record id="timesheet_report_task" model="ir.actions.report">
+        <field name="name">Timesheets/Stop Times</field>
+        <field name="model">mrp.production</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rgb_mrp_custom.mrp_timesheet_stops</field>
+        <field name="report_file">rgb_mrp_custom.mrp_timesheet_stops</field>
+        <field name="binding_model_id" ref="mrp.model_mrp_production"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

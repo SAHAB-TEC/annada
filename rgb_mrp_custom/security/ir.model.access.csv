@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mrp_delegate_manager,mrp_delegate_manager,model_mrp_delegate,,1,1,1,1
+access_mrp_delegate_manager_line,mrp_delegate_manager,model_mrp_delegate_line,,1,1,1,1
+access_mrp_production_stop_wizard_manager,mrp_production_stop_wizard_manager,model_mrp_production_stop_wizard,,1,1,1,1
+access_mrp_production_stop_manager,mrp_production_stop_manager,model_mrp_production_stop,,1,1,1,1

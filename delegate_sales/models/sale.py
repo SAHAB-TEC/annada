@@ -14,6 +14,8 @@ class HrEmployee(models.Model):
 
     max_sale_amount = fields.Float(string='Max Sale Amount', required=False)
 
+    mrp_ids = fields.One2many(comodel_name='mrp.production', inverse_name='delegate_id', string='MRP', required=False)
+
     def print_aged_receivable_report(self):
         # Fetch data for the report
         contact_ids = self.env['res.partner'].search([('delegate_id', '=', self.id)])

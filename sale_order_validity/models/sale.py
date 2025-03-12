@@ -26,7 +26,9 @@ class SaleOrderLine(models.Model):
                 if types and len(types) > 0:
                     rec.stock_lot_ids = [(6, 0, types.ids)]
                     rec.lot_expire_id = types.ids[0]
-
+                else:
+                    rec.stock_lot_ids = False
+                    rec.lot_expire_id = False
             else:
                 rec.stock_lot_ids = False
                 rec.lot_expire_id = False

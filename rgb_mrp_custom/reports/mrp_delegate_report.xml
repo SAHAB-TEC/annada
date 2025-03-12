@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Report Template -->
+        <template id="mrp_delegate_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="container">
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <h2>MRP Delegate</h2>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <h3>Product</h3>
+                                    <ul>
+                                        <li t-foreach="o.product_ids" t-as="product">
+                                            <t t-esc="product.name"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <h3>Employee</h3>
+                                    <ul>
+                                        <li t-foreach="o.employee_ids" t-as="employee">
+                                            <t t-esc="employee.name"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <h3>Date From</h3>
+                                    <p><t t-esc="o.date_from"/></p>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <h3>Date To</h3>
+                                    <p><t t-esc="o.date_to"/></p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <h3>Shift Name</h3>
+                                <p><t t-esc="o.shift_name"/></p>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3>Lines</h3>
+                                    <table class="table table-sm table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Employee</th>
+                                                <th>Manufacturing Order</th>
+                                                <th>Product</th>
+                                                <th>Qty</th>
+                                                <th>Date</th>
+                                                <th>Shift Name</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="o.line_ids" t-as="line">
+                                                <td><t t-esc="line.employee_id.name"/></td>
+                                                <td><t t-esc="line.mo_id.name"/></td>
+                                                <td><t t-esc="line.product_id.name"/></td>
+                                                <td><t t-esc="line.qty"/></td>
+                                                <td><t t-esc="line.date"/></td>
+                                                <td><t t-esc="line.shift_name"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

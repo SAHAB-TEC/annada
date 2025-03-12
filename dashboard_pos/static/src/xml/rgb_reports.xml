@@ -23,6 +23,7 @@
                                                     <tr>
                                                         <th rowspan="12">Name&#160;&#160;&#160;</th>
                                                         <th rowspan="12">Balance</th>
+                                                        <th rowspan="12">Company</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -38,6 +39,12 @@
                                                                 <h2 class="text-color display-6"
                                                                     style="font-size: 15px;">
                                                                     <t t-esc="journal['balance']"/>
+                                                                </h2>
+                                                            </td>
+                                                            <td>
+                                                                <h2 class="text-color display-6"
+                                                                    style="font-size: 15px;">
+                                                                    <t t-esc="journal['company']"/>
                                                                 </h2>
                                                             </td>
                                                         </tr>

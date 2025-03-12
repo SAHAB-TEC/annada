@@ -75,6 +75,7 @@ class AccountJournal(models.Model):
             journal_list.append({
                 "journal_name": journal.display_name,
                 'balance': currency.format(outstanding_pay_account_balance),
+                'company': journal.company_id.name,
             })
 
         return {

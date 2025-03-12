@@ -3,3 +3,5 @@ access_average_sales_report_form_user,access.average.sales.report.form.user,mode
 access_average_sales_report_line_user,access.average.sales.report.line.user,model_average_sales_report_line,,1,1,1,1
 access_product_year_target_manager,product_year_target_manager,model_product_year_target,,1,1,1,1
 access_product_year_target_line_manager,product_year_target_line_manager,model_product_year_target_line,,1,1,1,1
+access_delegate_daily_report_manager,delegate_daily_report_manager,model_delegate_daily_report,,1,1,1,1
+access_delegate_daily_report_manager_line,delegate_daily_report_line_manager,model_delegate_daily_report_line,,1,1,1,1

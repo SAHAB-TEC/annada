@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Report Template -->
+        <template id="mrp_timesheet_stops">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="container">
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <h2>MRP Timesheet</h2>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <h3>Manufacturing Order</h3>
+                                    <p><t t-esc="o.name"/></p>
+                                </div>
+                                <div class="col-6">
+                                    <h3>Delegate</h3>
+                                    <p><t t-esc="o.delegate_id.name"/></p>
+                                </div>
+                            </div>
+
+                            <div class="row" t-if="o.timesheet_ids">
+                                <div class="col-12">
+                                    <h3>Timesheets</h3>
+                                    <table class="table table-sm table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Employee</th>
+                                                <th>Manufacturing Order</th>
+                                                <th>Hours</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="o.timesheet_ids" t-as="timesheet">
+                                                <td><t t-esc="o.delegate_id.name"/></td>
+                                                <td><t t-esc="timesheet.mo_id.name"/></td>
+                                                <td><t t-esc="timesheet.unit_amount"
+                                                       t-options="{'widget': 'duration', 'digital': True, 'unit': 'hour', 'round': 'minute'}"/></td>
+                                                <td><t t-esc="timesheet.date"/></td>
+                                            </tr>
+                                            <tr/>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <!--                            stops-->
+                            <div class="row" t-if="o.stop_times">
+                                <div class="col-12">
+                                    <h3>Stops</h3>
+                                    <table class="table table-sm table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Manufacturing Order</th>
+                                                <th>Reason</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th>Hours</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="o.stop_times" t-as="stop">
+                                                <td><t t-esc="stop.mo_id.name"/></td>
+                                                <td><t t-esc="stop.stop_reason"/></td>
+                                                <td><t t-esc="stop.start_time"/></td>
+                                                <td><t t-esc="stop.end_time"/></td>
+                                                <td><t t-esc="stop.duration"
+                                                       t-options="{'widget': 'duration', 'digital': True, 'unit': 'hour', 'round': 'minute'}"/></td>
+                                            </tr>
+                                            <tr/>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

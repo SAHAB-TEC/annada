@@ -10,7 +10,8 @@ class ProductYearTarget(models.Model):
     _name = 'product.year.target'
     _description = _('ProductYearTarget')
 
-    lines = fields.One2many('product.year.target.line', 'target_id', string="Lines", compute='calculate_lines', store=True)
+    lines = fields.One2many('product.year.target.line', 'target_id', string="Lines", compute='calculate_lines',
+                            store=True)
     product_type = fields.Selection([
         ('final_product', 'Final Product'),
         ('component', 'Component'),
@@ -48,10 +49,30 @@ class ProductYearTarget(models.Model):
                     ('name', '=', str(current_year + 1)),
                     ('product_template_id', '=', product.product_tmpl_id.id)
                 ])
+                produced_current_year = 0.0
+                purchased_current_year = 0.0
+                start_date = fields.Date.today().replace(year=current_year, month=1, day=1)
+                end_date = fields.Date.today().replace(year=current_year, month=12, day=31)
+
+                produced_current_year = self.env['mrp.production'].search([
+                    ('product_id', '=', product.id),
+                    ('state', '=', 'done'),
+                    ('date_finished', '>=', start_date),
+                    ('date_finished', '<=', end_date)
+                ]).mapped('product_qty')
+
+                purchased_current_year = self.env['purchase.order.line'].search([
+                    ('product_id', '=', product.id),
+                    ('order_id.state', '=', 'purchase'),
+                    ('order_id.date_order', '>=', start_date),
+                    ('order_id.date_order', '<=', end_date)
+                ]).mapped('product_qty')
 
                 lines.append((0, 0, {
                     'product_id': product.id,
                     'product_uom': current_year_target.product_uom.id,
+                    'produced_current_year': sum(produced_current_year),
+                    'purchased_current_year': sum(purchased_current_year),
                     'product_uom_next': next_year_target.product_uom.id,
                     'target_current_year': current_year_target.target_amount if current_year_target else 0,
                     'target_next_year': next_year_target.target_amount if next_year_target else 0
@@ -78,4 +99,6 @@ class ProductYearTargetLine(models.Model):
     )
 
     target_current_year = fields.Float("Target Current Year")
+    produced_current_year = fields.Float("Produced Current Year")
+    purchased_current_year = fields.Float("Purchased Current Year")
     target_next_year = fields.Float("Target Next Year")

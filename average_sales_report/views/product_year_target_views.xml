@@ -21,8 +21,11 @@
                                 <field name="product_id"/>
                                 <field name="product_uom"/>
                                 <field name="target_current_year" sum="target_current_year"/>
+                                <field name="produced_current_year" column_invisible="parent.product_type != 'final_product'" sum="Produced"/>
+                                <field name="purchased_current_year" column_invisible="parent.product_type != 'component'" sum="Purchased"/>
                                 <field name="product_uom_next"/>
                                 <field name="target_next_year" sum="target_next_year"/>
+
                             </tree>
                         </field>
                     </group>

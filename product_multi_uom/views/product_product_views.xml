@@ -37,4 +37,58 @@
             </xpath>
         </field>
     </record>
+
+<!--    inherit stock.product_product_stock_tree -->
+    <record id="product_product_stock_tree" model="ir.ui.view">
+        <field name="name">product.product.stock.tree.inherit.product.multi.uom</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="stock.product_product_stock_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='uom_id']" position="after">
+                <field name="secondary_product_uom_id"/>
+            </xpath>
+
+            <xpath expr="//field[@name='qty_available']" position="after">
+                <field name="secondary_on_hand" sum="Total On Hand"/>
+            </xpath>
+            <xpath expr="//field[@name='qty_available']" position="attributes">
+                <attribute name="invisible">1</attribute>
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='free_qty']" position="after">
+                <field name="secondary_free_qty" sum="Total Free"/>
+            </xpath>
+            <xpath expr="//field[@name='free_qty']" position="attributes">
+                <attribute name="invisible">1</attribute>
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='virtual_available']" position="after">
+                <field name="secondary_forecast_qty" sum="Total Forecasted"/>
+            </xpath>
+            <xpath expr="//field[@name='virtual_available']" position="attributes">
+                <attribute name="invisible">1</attribute>
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+
+<!--            in-->
+            <xpath expr="//field[@name='incoming_qty']" position="after">
+                <field name="secondary_income_qty" sum="Total Incoming"/>
+            </xpath>
+            <xpath expr="//field[@name='incoming_qty']" position="attributes">
+                <attribute name="invisible">1</attribute>
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+
+<!--            out-->
+            <xpath expr="//field[@name='outgoing_qty']" position="after">
+                <field name="secondary_outgoing_qty" sum="Total Outgoing"/>
+            </xpath>
+            <xpath expr="//field[@name='outgoing_qty']" position="attributes">
+                <attribute name="invisible">1</attribute>
+                <attribute name="column_invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>

@@ -4,13 +4,14 @@
     'summary': 'Generate an Average Sales Report based on inventory data',
     'category': 'Inventory',
     'author': 'marwah adel',
-    'depends': ['stock', 'base' ,'BOM_details_report'],
+    'depends': ['stock', 'sale_management' ,'BOM_details_report', 'delegate_sales', 'sale_order_validity'],
     "data": [
         "security/ir.model.access.csv",
         "views/average_sales_report_menu.xml",
         "reports/average_sales_report_template.xml",
         "views/product_year_target_views.xml",
-        'reports/product_target_year_report.xml',
+        "reports/product_target_year_report.xml",
+        "views/delegate_daily_report_views.xml"
     ],
     'application': False,
     'installable': True,
