@@ -50,7 +50,171 @@
                 <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
 <!--        Income/Expense/Profit        -->
                     <div class="row" style="margin:0px">
-                    <div class="col-md-4" id="col-graph">
+                        <!--            BANK AND CASH BALANCE       -->
+                        <div class="col-md-4">
+                        <div class="card" style="margin-top:20px;height:521px;">
+                            <!--card-header-->
+                            <div class="card-header"
+                                 style=" padding: 17px 1.5rem !important;
+                                 background:linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
+                                 display: flex !IMPORTANT; justify-content: space-between;
+                                 align-items: center;border-radius: 10px 10px 0px 0px; ">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3"
+                                            style="color:aqua;">BANK AND CASH BALANCE</h3>
+                                    </b>
+                                </div>
+                            </div>
+                            <!--card-body-->
+                            <div class="card-body" style="overflow: overlay;">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-striped"
+                                               t-if="state.balance">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Amount</th>
+                                                    <th>Company</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr t-foreach="state.balance"
+                                                    t-as="balance"
+                                                    t-key="balance.id">
+                                                    <td><t t-esc="balance.name.en_US"/> </td>
+                                                    <td><t t-esc="balance.balance"/> </td>
+                                                    <td><t t-esc="balance.company"/> </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div t-else="">
+                                            <h2>NO DATA AVAILABLE</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <!--            MRP       -->
+                        <div class="col-md-4">
+                        <div class="card" style="margin-top:20px;height:521px;">
+                            <!--card-header-->
+                            <div class="card-header"
+                                 style=" padding: 17px 1.5rem !important;
+                                 background:linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
+                                 display: flex !IMPORTANT; justify-content: space-between;
+                                 align-items: center;border-radius: 10px 10px 0px 0px; ">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3"
+                                            style="color:aqua;">MRP</h3>
+                                    </b>
+                                </div>
+                                <div class="card-tools">
+                                    <select class="form-select"
+                                            style="color:#000000;"
+                                            t-model="state.mrp_data_filter"
+                                            t-on-change="onPeriodChange">
+                                        <option value="this_month">This Month</option>
+                                        <option value="this_year">This Year</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--card-body-->
+                            <div class="card-body" style="overflow: overlay;">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-striped"
+                                               t-if="state.balance">
+                                            <thead>
+                                                <tr>
+                                                    <th>Product</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr t-foreach="state.mrp"
+                                                    t-as="balance"
+                                                    t-key="balance.id">
+                                                    <td><t t-esc="balance.product_name"/> </td>
+                                                    <td><t t-esc="balance.value"/> </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div t-else="">
+                                            <h2>NO DATA AVAILABLE</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <!--            Component       -->
+                        <div class="col-md-4">
+                        <div class="card" style="margin-top:20px;height:521px;">
+                            <!--card-header-->
+                            <div class="card-header"
+                                 style=" padding: 17px 1.5rem !important;
+                                 background:linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
+                                 display: flex !IMPORTANT; justify-content: space-between;
+                                 align-items: center;border-radius: 10px 10px 0px 0px; ">
+                                <div class="card-title">
+                                    <b>
+                                        <h3 class="custom-h3"
+                                            style="color:aqua;">Component Cost in Year</h3>
+                                    </b>
+                                </div>
+                                <div class="card-tools">
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="Year"
+                                           t-model="state.component_year_filter"
+                                           style="color:#000000;"
+                                           t-on-change="onPeriodChange">
+
+                                    </input>
+                                </div>
+                            </div>
+
+                            <!--card-body-->
+                            <div class="card-body" style="overflow: overlay;">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-striped"
+                                               t-if="state.balance">
+                                            <thead>
+                                                <tr>
+                                                    <th>Year</th>
+                                                    <th>Component</th>
+                                                    <th>Quantity</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr t-foreach="state.component_year"
+                                                    t-as="comp"
+                                                    t-key="comp.id">
+                                                    <td><t t-esc="comp.year"/> </td>
+                                                    <td><t t-esc="comp.product_name"/> </td>
+                                                    <td><t t-esc="comp.qty"/> </td>
+                                                    <td><t t-esc="comp.value"/> </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div t-else="">
+                                            <h2>NO DATA AVAILABLE</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-md-4" id="col-graph">
                         <div class="card" style="margin-top:20px;">
                             <!--card-header-->
                             <div class="card-header"
@@ -112,7 +276,7 @@
                         </div>
                     </div>
 
-        <!--        PAYMENT LIST       -->
+                        <!--        PAYMENT LIST       -->
                         <div class="col-md-4">
                         <div class="card" style="margin-top:20px;">
                         <!-- card-header-->
@@ -186,8 +350,8 @@
                             </div>
                         </div>
                     </div>
-            <!--        TOP SALE REVENUE CUSTOMER-->
-                    <div class="col-md-4" id="col-graph">
+                        <!--        TOP SALE REVENUE CUSTOMER-->
+                        <div class="col-md-4" id="col-graph">
                         <div class="card" style="margin-top:20px;">
                             <!--card-header-->
                             <div class="card-header"
@@ -244,57 +408,11 @@
 
                         </div>
                     </div>
-        <!--            BANK AND CASH BALANCE       -->
-                    <div class="col-md-4">
-                        <div class="card" style="margin-top:20px;height:521px;">
-                            <!--card-header-->
-                            <div class="card-header"
-                                 style=" padding: 17px 1.5rem !important;
-                                 background:linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
-                                 display: flex !IMPORTANT; justify-content: space-between;
-                                 align-items: center;border-radius: 10px 10px 0px 0px; ">
-                                <div class="card-title">
-                                    <b>
-                                        <h3 class="custom-h3"
-                                            style="color:aqua;">BANK AND CASH BALANCE</h3>
-                                    </b>
-                                </div>
-                            </div>
-                            <!--card-body-->
-                            <div class="card-body" style="overflow: overlay;">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <table class="table table-striped"
-                                               t-if="state.balance">
-                                            <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Amount</th>
-                                                    <th>Company</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr t-foreach="state.balance"
-                                                    t-as="balance"
-                                                    t-key="balance.id">
-                                                    <td><t t-esc="balance.name.en_US"/> </td>
-                                                    <td><t t-esc="balance.balance"/> </td>
-                                                    <td><t t-esc="balance.company"/> </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div t-else="">
-                                            <h2>NO DATA AVAILABLE</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
 
-    <!--            AGED RECEIVABLE/PAYABLE        -->
-                    <div class="col-md-4">
+
+                        <!--            AGED RECEIVABLE/PAYABLE        -->
+                        <div class="col-md-4">
                         <div class="card" style="margin-top:20px;">
                             <!--card-header-->
                             <div class="card-header"
@@ -346,8 +464,8 @@
                             </div>
                         </div>
                     </div>
-    <!--            TOP CUSTOMERS / VENDORS         -->
-                    <div class="col-md-4" style="margin-bottom:115px;">
+                        <!--            TOP CUSTOMERS / VENDORS         -->
+                        <div class="col-md-4" style="margin-bottom:115px;">
                         <div class="card" style="margin-top:20px;height:521px;">
                             <!--card-header-->
                             <div class="card-header"

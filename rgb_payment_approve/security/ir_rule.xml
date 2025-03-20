@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_rule_payment_approve_request" model="ir.rule">
+        <field name="name">Payment Approve Request</field>
+        <field name="model_id" ref="rgb_payment_approve.model_payment_approve_request"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <!-- domain -->
+        <field name="domain_force">['|',('user_id.id', '=', user.id), ('manager_id.id', '=', user.id)]</field>
+    </record>
+</odoo>

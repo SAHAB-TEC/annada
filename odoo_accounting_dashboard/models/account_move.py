@@ -231,6 +231,60 @@ class AccountMove(models.Model):
             }
 
     @api.model
+    def get_mrp_dashboard_data(self, mrp_data_filter):
+        test_mrp_dashboard_data = []
+        last_day = (calendar.monthrange(fields.Date.today().year, fields.Date.today().month))[1]
+        if mrp_data_filter == 'this_month':
+            start_date = f"{fields.Date.today().year}-{fields.Date.today().month}-01"
+            end_date = f"{fields.Date.today().year}-{fields.Date.today().month}-{last_day}"
+        else:
+            start_date = f"{fields.Date.today().year}-01-01"
+            end_date = f"{fields.Date.today().year}-12-31"
+
+
+        # Get the data from the database
+        all_mrp = self.env['mrp.production'].search([
+            ('date_finished', '>=', start_date),
+            ('date_finished', '<=', end_date),
+            ('state', '=', 'done')
+        ])
+        # group it by product_name and sum product_qty TODO:
+        grouped_list = []
+
+        for mrp in all_mrp.mapped('product_id'):
+            qty = sum(all_mrp.filtered(lambda x: x.product_id == mrp).mapped('product_qty'))
+            test_mrp_dashboard_data.append({
+                'product_name': mrp.name,
+                'value': qty
+            })
+
+        return  test_mrp_dashboard_data
+
+    @api.model
+    def get_component_year(self, component_year_filter):
+        # get all product components
+        if component_year_filter == '' or component_year_filter == False:
+            component_year_filter = fields.date.today().year
+
+        all_product = self.env['product.target'].search([
+            ('name', '=', component_year_filter)
+        ])
+
+        result = []
+
+        for product in all_product:
+            qty = product.target_amount
+            amount = qty * product.product_template_id.standard_price
+            result.append({
+                'year': component_year_filter,
+                'product_name': product.product_template_id.name,
+                'qty': qty,
+                'value': amount
+            })
+
+        return result
+
+    @api.model
     def get_payment_data(self, payment_list_filter, payment_data_filter):
         """ Getting datas for customer payment list and vendor payment list based on current year and month"""
         last_day = (calendar.monthrange(fields.Date.today().year, fields.Date.today().month))[1]

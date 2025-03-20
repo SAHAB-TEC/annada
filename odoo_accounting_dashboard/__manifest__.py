@@ -29,7 +29,7 @@
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': 'https://cybrosys.com',
-    'depends': ['account_accountant'],
+    'depends': ['account_accountant', 'mrp', 'product_annual_target'],
     'data': [
         'data/account_move_data.xml',
     ],

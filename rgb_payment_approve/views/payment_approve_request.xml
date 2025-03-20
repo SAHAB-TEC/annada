@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <!-- inherit account payment form view -->
+    <record id="payment_approve_request_view_form_inherit" model="ir.ui.view">
+        <field name="name">payment.approve.request.view.form.inherit</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_post']" position="after">
+                <field name="can_confirm" invisible="1"/>
+                <button string="Request Approve" name="action_request_approve" type="object" class="oe_highlight" invisible="can_confirm == True"/>
+            </xpath>          
+
+        </field>
+    </record>
+
+    <record id="payment_approve_request_view_form" model="ir.ui.view">
+        <field name="name">payment.approve.request.view.form</field>
+        <field name="model">payment.approve.request</field>
+        <field name="arch" type="xml">
+            <form string="Payment Approve Request">
+                <header>
+                    <!-- state -->
+                    <field name="state" widget="statusbar"/>
+                    <!-- end state -->
+                    <button string="Approve" name="action_approve" type="object" class="oe_highlight" invisible="state != 'new'" groups="rgb_payment_approve.group_payment_approve_manager"/>
+                    <button string="Reject" name="action_reject" type="object" class="oe_highlight" invisible="state not in ['new', 'approved']"  groups="rgb_payment_approve.group_payment_approve_manager"/>
+                    <button string="Reset To New" name="action_set_to_new" type="object" class="oe_highlight" invisible="state not in ['rejected', 'approved']" groups="rgb_payment_approve.group_payment_approve_manager"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="user_id"  />
+                        <field name="manager_id" />
+                        <field name="payment_id" />
+                    </group>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="payment_approve_request_view_tree" model="ir.ui.view">
+        <field name="name">payment.approve.request.view.tree</field>
+        <field name="model">payment.approve.request</field>
+        <field name="arch" type="xml">
+            <tree string="Payment Approve Request">
+                <field name="user_id"/>
+                <field name="manager_id"/>
+                <field name="payment_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="payment_approve_request_view_action" model="ir.actions.act_window">
+        <field name="name">Payment Approve Request</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">payment.approve.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                <p>
+                </p>
+            </p>
+        </field>
+    </record>
+    <menuitem id="menu_payment_approve_request_action" name="Payment Approve Request"
+              parent="account.menu_account_config" action="payment_approve_request_view_action" sequence="10"/>
+</odoo>

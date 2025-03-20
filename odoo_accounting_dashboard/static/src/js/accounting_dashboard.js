@@ -12,6 +12,8 @@ export class AccountDashboard extends Component {
             income_chart:{},
             chart:[],
             payment_data: [],
+            mrp: [],
+            component_year: [],
             top_sale_cust: [],
             IncomeExpense:'income',
             top_filter: 'this_month',
@@ -19,6 +21,7 @@ export class AccountDashboard extends Component {
             aged_filter: 'aged_receive',
             top_sale_cust_filter: 'this_month',
             aged_payable_filter: 'this_month',
+            mrp_data_filter: 'this_month',
             payment_data_filter: 'this_month',
             payment_list_filter: 'customer_payment',
         })
@@ -51,6 +54,8 @@ export class AccountDashboard extends Component {
         this.state.data = await this.orm.call('account.move','get_datas',[]);
         this.state.income_chart = await this.orm.call("account.move","get_income_chart", [this.state.income]);
         this.state.payment_data = await this.orm.call("account.move","get_payment_data", [this.state.payment_list_filter, this.state.payment_data_filter]);
+        this.state.component_year = await this.orm.call("account.move","get_component_year", [this.state.component_year_filter]);
+        this.state.mrp = await this.orm.call("account.move","get_mrp_dashboard_data", [this.state.mrp_data_filter]);
         this.state.top = await this.orm.call("account.move","get_top_datas", [this.state.top_filter]);
         this.state.aged_payable = await this.orm.call("account.move","get_aged_payable", [this.state.aged_filter,this.state.aged_payable_filter]);
         this.state.top_sale_cust = await this.orm.call("account.move","get_sale_revenue", [this.state.top_sale_cust_filter]);

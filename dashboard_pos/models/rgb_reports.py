@@ -24,12 +24,17 @@ class RGBReports(models.Model):
         # Get the data from the database
         all_mrp = self.env['mrp.production'].search([
             ('date_finished', '>=', datetime_from),
-            ('date_finished', '<=', datetime_to)
+            ('date_finished', '<=', datetime_to),
+            ('state', '=', 'done')
         ])
-        for mrp in all_mrp:
+        # group it by product_name and sum product_qty TODO:
+        grouped_list = []
+
+        for mrp in all_mrp.mapped('product_id'):
+            qty = sum(all_mrp.filtered(lambda x: x.product_id == mrp).mapped('product_qty'))
             test_mrp_dashboard_data.append({
-                'product_name': mrp.product_id.name,
-                'value': mrp.product_qty
+                'product_name': mrp.name,
+                'value': qty
             })
 
         return {
