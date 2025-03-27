@@ -48,19 +48,19 @@ class ProductTemplate(models.Model):
             record.second_quarter = half_target
 
     # Quarter 1 fields 
-    q1_month1 = fields.Float(store=True, readonly="False", string='January')
-    q1_month2 = fields.Float(store=True, readonly="False", string='February')
-    q1_month3 = fields.Float(store=True, readonly="False", string='March')
-    q1_month4 = fields.Float(store=True, readonly="False", string='April')
-    q1_month5 = fields.Float(store=True, readonly="False", string='May')
-    q1_month6 = fields.Float(store=True, readonly="False", string='June')
+    q1_month1 = fields.Float(store=True, readonly=False, string='January')
+    q1_month2 = fields.Float(store=True, readonly=False, string='February')
+    q1_month3 = fields.Float(store=True, readonly=False, string='March')
+    q1_month4 = fields.Float(store=True, readonly=False, string='April')
+    q1_month5 = fields.Float(store=True, readonly=False, string='May')
+    q1_month6 = fields.Float(store=True, readonly=False, string='June')
     # Quarter 2 fields ,, sto
-    q2_month1 = fields.Float(store=True, readonly="False", string='July')
-    q2_month2 = fields.Float(store=True, readonly="False", string='August')
-    q2_month3 = fields.Float(store=True, readonly="False", string='September')
-    q2_month4 = fields.Float(store=True, readonly="False", string='October')
-    q2_month5 = fields.Float(store=True, readonly="False", string='November')
-    q2_month6 = fields.Float(store=True, readonly="False", string='December')
+    q2_month1 = fields.Float(store=True, readonly=False, string='July')
+    q2_month2 = fields.Float(store=True, readonly=False, string='August')
+    q2_month3 = fields.Float(store=True, readonly=False, string='September')
+    q2_month4 = fields.Float(store=True, readonly=False, string='October')
+    q2_month5 = fields.Float(store=True, readonly=False, string='November')
+    q2_month6 = fields.Float(store=True, readonly=False, string='December')
 
     # sum of the months for quarter 1 must = first_quarter
     # sum of the months for quarter 2 must = second_quarter
