@@ -11,7 +11,9 @@
         "reports/average_sales_report_template.xml",
         "views/product_year_target_views.xml",
         "reports/product_target_year_report.xml",
-        "views/delegate_daily_report_views.xml"
+        "views/delegate_daily_report_views.xml",
+        'reports/ir_actions_report_templates.xml',
+        'reports/action.xml',
     ],
     'application': False,
     'installable': True,

@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <template id="report_saleorder_validity_document_inherit" inherit_id="sale.report_saleorder_document">
-        <xpath expr="//div[@id='informations']" position="inside">
-            <div t-if="doc.delegate_sale_id" class="col-auto col-3 mw-100 mb-2" name="delegate_name">
-                <strong>Delegate:</strong><br/>
-                <span class="m-0" t-field="doc.delegate_sale_id"></span>
-            </div>
-            <div t-if="doc.delegate_sale_id" class="col-auto col-3 mw-100 mb-2" name="delegate_number">
-                <strong>Delegate Phone:</strong><br/>
-                <span class="m-0" t-field="doc.delegate_sale_id.mobile_phone"></span>
-            </div>
-        </xpath>
-
-    </template>
 
     <template id="report_target_year">
         <t t-call="web.html_container">
