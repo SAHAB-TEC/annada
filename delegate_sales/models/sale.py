@@ -147,7 +147,7 @@ class SaleOrder(models.Model):
 
     def _paid_total(self):
         for ret in self:
-            invoices = ret.env['account.move'].search([('name', '=', ret.invoice_ids.name)])
+            invoices = ret.env['account.move'].search([('name', 'in', ret.invoice_ids.mapped('name'))])
 
             paid = 0.0
             for rec in invoices:
