@@ -24,7 +24,7 @@ class DelegateCommissionWiz(models.TransientModel):
         if not delegate:
             delegate = self.env['hr.employee'].search([('salesperson', '=', True)])
         for emp in delegate:
-            domain = [('date_order', '>=', date_from), ('date_order', '<=', date_to), ('delegate_sale_id', '=', emp.id)]
+            domain = [('date_order', '>=', date_from), ('date_order', '<=', date_to), ('delegate_sale_id', '=', emp.id), ('non_commission', '=', False)]
 
             orders = self.env['sale.order'].search(domain)
             # print("validity===>", validity)

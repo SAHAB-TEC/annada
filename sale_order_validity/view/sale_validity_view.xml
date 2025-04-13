@@ -33,6 +33,11 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
+
+            <xpath expr="//group[@name='partner_details']" position="inside">
+                <field name="non_commission"/>
+            </xpath>
+
             <xpath expr="//notebook/page[@name='order_lines']/field/tree/field[@name='name']" position="after">
                 <field name="lot_expire_id"/>
             </xpath>
@@ -67,6 +72,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='coach_id']" position="after">
                 <field name="salesperson" invisible="1"/>
+                <field name="open_remaining_total" groups="sale_order_validity.group_open_remaining"/>
             </xpath>
             <div name="button_box" position="inside">
                 <button type="object" class="oe_stat_button" icon="fa-pencil-square-o"
@@ -76,6 +82,15 @@
                             <field name="total_sale" widget='monetary'/>
                         </span>
                         <span class="o_stat_text">Sales</span>
+                    </div>
+                </button>
+                <button type="object" class="oe_stat_button" icon="fa-pencil-square-o"
+                        name="action_view_sale_orders_non_commission">
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="total_sale_non_commission" widget='monetary'/>
+                        </span>
+                        <span class="o_stat_text">Non Commission</span>
                     </div>
                 </button>
                 <button type="object" class="oe_stat_button" icon="fa-pencil-square-o"

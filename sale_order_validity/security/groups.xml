@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+<!--        group open remaining-->
+        <record id="group_open_remaining" model="res.groups">
+            <field name="name">Delegate Opening Remaining</field>
+        </record>
+
+    </data>
+</odoo>

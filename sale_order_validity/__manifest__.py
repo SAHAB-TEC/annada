@@ -10,6 +10,7 @@
     "data": [
         'data/ir_sequence_data.xml',
         'view/sale_validity_view.xml',
+        'security/groups.xml'
     ],
     "auto_install": False,
     "installable": True,

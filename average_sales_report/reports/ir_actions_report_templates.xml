@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+     <template id="report_sale_order_summary">
+        <t t-call="web.basic_layout">
+            <t t-set="doc_ids" t-value="docs.ids"/>
+            <t t-set="doc_model" t-value="docs._name"/>
+            <t t-set="docs" t-value="docs"/>
+            <div class="page">
+                <h2>Sale Orders Summary</h2>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Order</th>
+                            <th>Customer</th>
+                            <th>Date</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs" t-as="o">
+                            <tr>
+                                <td><t t-esc="o.name"/></td>
+                                <td><t t-esc="o.partner_id.name"/></td>
+                                <td><t t-esc="o.date_order.strftime('%Y-%m-%d')"/></td>
+                                <td><t t-esc="o.amount_total"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
     <template id="rgb_report_saleorder_document">
         <t t-call="web.external_layout">
             <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>

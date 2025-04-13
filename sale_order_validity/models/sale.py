@@ -12,6 +12,7 @@ class SaleOrderLine(models.Model):
     before_disc = fields.Float(string="Before Disc", required=False, compute="_comp_total")
 
 
+
     @api.onchange('product_uom_qty', 'price_unit')
     def _comp_total(self):
         for rec in self:
@@ -35,6 +36,8 @@ class SaleOrderLine(models.Model):
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
+
+    non_commission = fields.Boolean(string="غير خاضع للعمولة ؟", required=False, default=False)
 
     # action confirm
     def action_confirm(self):

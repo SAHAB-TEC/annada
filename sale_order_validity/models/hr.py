@@ -7,8 +7,10 @@ class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
     total_sale = fields.Float(compute='_sale_total', string="Total Sale", )
+    total_sale_non_commission = fields.Float(compute='_sale_total', string="Total Sale", )
     total_payment = fields.Float(compute='_pay_total', string="Total Payment", )
     remaining_total = fields.Float(compute='remaining_sum_total', string="Remaining", )
+    open_remaining_total = fields.Float(string="Open Remaining", )
     contacts_count = fields.Integer('Number of related contacts', compute='_compute_contacts_count')
     inv_count = fields.Integer('Number of Invoices', compute='get_inv_count')
     inv_total = fields.Float(compute='_compute_inv_total', string="Total Invoice", )
@@ -24,12 +26,35 @@ class HrEmployee(models.Model):
             self.inv_total = 0
 
     def remaining_sum_total(self):
-        self.remaining_total = self.total_sale - self.total_payment
+        # self.remaining_total = self.total_sale + self.open_remaining_total - self.total_payment
+        for rec in self:
+            rec.remaining_total = rec.total_sale + rec.open_remaining_total - rec.total_payment
 
     def action_view_sale_orders(self):
         self.ensure_one()
         sale_order_ids = self.env['sale.order'].search([('delegate_sale_id', '=', self.id)])
         print("sale_order_ids===<>", sale_order_ids)
+        action = {
+            'res_model': 'sale.order',
+            'type': 'ir.actions.act_window',
+        }
+        if len(sale_order_ids) == 1:
+            action.update({
+                'view_mode': 'form',
+                'res_id': sale_order_ids[0],
+            })
+        else:
+            action.update({
+                'name': _("SAle Order generated from %s", self.name),
+                'domain': [('id', 'in', sale_order_ids.ids)],
+                'view_mode': 'tree,form',
+            })
+        return action
+
+    def action_view_sale_orders_non_commission(self):
+        self.ensure_one()
+        sale_order_ids = self.env['sale.order'].search([('delegate_sale_id', '=', self.id), ('non_commission', '=', True)])
+
         action = {
             'res_model': 'sale.order',
             'type': 'ir.actions.act_window',
@@ -67,7 +92,9 @@ class HrEmployee(models.Model):
 
     def _sale_total(self):
         sale_total_ids = self.env['sale.order'].search([('delegate_sale_id', '=', self.id), ('state', '=', 'sale')])
+        sale_total_ids_non = self.env['sale.order'].search([('delegate_sale_id', '=', self.id), ('state', '=', 'sale'), ('non_commission', '=', True)])
 
+        self.total_sale_non_commission = abs(sum(sale_total_ids_non.mapped('amount_total')))
         self.total_sale = abs(sum(sale_total_ids.mapped('amount_total')))
 
     def get_inv_count(self):

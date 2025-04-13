@@ -6,7 +6,7 @@
     "category": "Delegate Commission",
     'summary': 'Delegate Commission',
     "author": "Ahmed Amen",
-    "depends": ['base', 'hr','sale'],
+    "depends": ['base', 'hr','sale', 'delegate_sales','sale_order_validity'],
     "data": [
         'security/ir.model.access.csv',
         'report/report_delegate_commission.xml',

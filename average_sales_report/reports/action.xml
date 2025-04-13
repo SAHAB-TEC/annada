@@ -12,5 +12,15 @@
         <field name="binding_type">report</field>
     </record>
 
+    <record id="action_delegate_sales_summary" model="ir.actions.report">
+        <field name="name">Sale Orders Summary</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">average_sales_report.report_sale_order_summary</field>
+        <field name="report_file">average_sales_report.report_sale_order_summary</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+
+    </record>
 
 </odoo>

@@ -124,8 +124,25 @@
         </field>
     </record>
 
+    <record id="view_delegate_sales_tree_order" model="ir.ui.view">
+        <field name="name">sale.order.validity.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="delegate_sale_id"/>
+                <field name="region"/>
+                <field name="cash"/>
+            </xpath>
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="paid" sum="Total Paid"/>
+                <field name="remaining_amount" sum="Total Remaining"/>
+            </xpath>
+        </field>
+    </record>
+
     <!-- Inherit Form View to Modify it -->
-    <record id="view_partner_form" model="ir.ui.view">
+    <record id="view_partner_form2" model="ir.ui.view">
         <field name="name">res.partner.form</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
@@ -143,6 +160,7 @@
             <xpath expr="//field[@name='analytic_account_id']" position="after">
                 <field name="cash"/>
                 <filter string="Cash" name="cash" domain="[('cash', '=', 'cash')]"/>
+                <field name="delegate_sale_id" operator="child_of"/>
             </xpath>
         </field>
     </record>
@@ -164,6 +182,5 @@
             parent="sale.sale_order_menu"
             action="delegate_sales.action_delegate_hr_sale"
             sequence="42"/>
-
 
 </odoo>

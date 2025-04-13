@@ -10,6 +10,7 @@ class HrEmployee(models.Model):
     salesperson = fields.Boolean(string="SalesPerson", )
     commission_delegate_ids = fields.One2many(comodel_name='commission.delegate', inverse_name='hr_delegate_id',
                                               string='Commission', required=False)
+
     region_line_ids = fields.One2many(comodel_name='delegate.region.lines', inverse_name='delegate_id', string='Region',)
 
     max_sale_amount = fields.Float(string='Max Sale Amount', required=False)
